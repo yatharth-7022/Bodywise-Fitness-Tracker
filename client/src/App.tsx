@@ -4,7 +4,8 @@ import { Home } from "./pages/Home";
 import { Dashboard } from "./pages/Dashboard";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
-import { DASHBOARD, HOME, LOGIN, SIGNUP } from "./routes/routes";
+import { DASHBOARD, HOME, LOGIN, PRESIGNUP, SIGNUP } from "./routes/routes";
+import { PreSignUp } from "./pages/PreSignUp";
 function App() {
   const isAuthenticated = () => {
     // In a real application, you would check for a token, session, etc.
@@ -21,6 +22,8 @@ function App() {
         <Route path={HOME} element={<Home />} />
         <Route path={LOGIN} element={<Login />} />
         <Route path={SIGNUP} element={<SignUp />} />
+        <Route path={PRESIGNUP} element={<PreSignUp />} />
+
         <Route
           path={DASHBOARD}
           element={
