@@ -8,12 +8,14 @@ export const Home = () => {
         backgroundSize: "cover",
       }}
     >
-      <div className="flex font-montserrat justify-end h-full text-white flex-col items-center gap-4">
-        <p className="font-bold">Welcome</p>
-        <h1 className="font-extrabold">Build Your Fitness</h1>
-        <h1 className="font-black">Start Tracker</h1>
+      <div>
+        <p className="font-medium text-lg">Welcome</p>
+        <div className="flex flex-col text-[100px] gap-1 items-center">
+          <h1 className="font-bold ">Build Your Fitness</h1>
+          <h1 className="font-black ">Start Tracker</h1>
+        </div>
         <p className="font-bold">Achieve Body Goals</p>
-        <button className=" rounded-lg px-20 py-2 bg-green-400">
+        <button className="rounded-lg px-20 py-2 bg-green-400">
           Start Workout
         </button>
         <button className="bg-red-500">hi</button>
