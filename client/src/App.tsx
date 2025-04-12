@@ -2,10 +2,11 @@ import "./App.css";
 import { Navigate, Route, BrowserRouter, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Dashboard } from "./pages/Dashboard";
-import { Login } from "./pages/Login";
-import { SignUp } from "./pages/SignUp";
 import { DASHBOARD, HOME, LOGIN, PRESIGNUP, SIGNUP } from "./routes/routes";
 import { PreSignUp } from "./pages/PreSignUp";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import { Toaster } from "react-hot-toast";
 function App() {
   const isAuthenticated = () => {
     // In a real application, you would check for a token, session, etc.
@@ -13,11 +14,12 @@ function App() {
   };
 
   // Private Route component to protect routes that require authentication
-  const PrivateRoute = ({ children }) => {
+  const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
     return isAuthenticated() ? children : <Navigate to={LOGIN} />;
   };
   return (
     <BrowserRouter>
+      <Toaster position="top-right" reverseOrder={false} />
       <Routes>
         <Route path={HOME} element={<Home />} />
         <Route path={LOGIN} element={<Login />} />
