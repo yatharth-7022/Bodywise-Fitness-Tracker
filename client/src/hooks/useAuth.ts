@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DASHBOARD } from "@/routes/routes";
 import { LoginData, SignupData } from "@/types/auth";
+import api from "../../intercerptor";
 
 export const useAuth = () => {
   const navigate = useNavigate();
@@ -11,18 +12,8 @@ export const useAuth = () => {
   const signUpMutation = useMutation({
     mutationKey: ["signup"],
     mutationFn: async (data: SignupData) => {
-      const response = await fetch(SIGNUP, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const responseData = await response.json();
-      if (!response.ok) {
-        throw new Error(responseData.message || "Failed to sign up");
-      }
-      return responseData;
+      const response = await api.post(SIGNUP, data);
+      return response.data;
     },
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
@@ -38,18 +29,8 @@ export const useAuth = () => {
   const loginMutation = useMutation({
     mutationKey: ["login"],
     mutationFn: async (data: LoginData) => {
-      const response = await fetch(LOGIN, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-      const responseData = await response.json();
-      if (!response.ok) {
-        throw new Error(responseData.message || "Failed to log in");
-      }
-      return responseData;
+      const response = await api.post(LOGIN, data);
+      return response.data;
     },
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);

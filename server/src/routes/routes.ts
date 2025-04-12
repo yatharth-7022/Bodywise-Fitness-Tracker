@@ -7,15 +7,24 @@ import {
   handleValidationErrors,
   validateLogin,
   validateSignup,
+  validateWeightLog,
 } from "../middleware/validationMiddleware";
+import {
+  getRecentWeights,
+  getWeightLogs,
+  logWeight,
+} from "../controllers/weightController";
 
 const router = Router();
 
-// Apply rate limiting to all auth routes
 router.use(authRateLimiter);
+router.use(protect);
 
 router.post("/signup", validateSignup, handleValidationErrors, signup);
 router.post("/login", validateLogin, handleValidationErrors, login);
 router.get("/user", protect, getUser);
+router.post("/", validateWeightLog, handleValidationErrors, logWeight);
+router.get("/", getWeightLogs);
+router.get("/recent-weights", getRecentWeights);
 
 export default router;

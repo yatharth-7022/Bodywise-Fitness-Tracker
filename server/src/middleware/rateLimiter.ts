@@ -2,7 +2,7 @@ import { RateLimiterMemory } from "rate-limiter-flexible";
 import { Request, Response, NextFunction } from "express";
 
 const rateLimiter = new RateLimiterMemory({
-  points: 5, // Number of points
+  points: 20, // Increased from 5 to 20 requests
   duration: 60, // Per 60 seconds
 });
 
