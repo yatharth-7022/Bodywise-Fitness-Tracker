@@ -29,3 +29,41 @@ export const logWeight = async (
     res.status(500).json({ message: "Failed to log weight" });
   }
 };
+export const getWeightLogs = async (
+  req: AuthRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const userId = req.userId!;
+    logger.info(`Fetching weights for user ${userId}`);
+
+    const weights = await prisma.weight.findMany({
+      where: { userId },
+      orderBy: { date: "desc" },
+    });
+
+    logger.info(`Found ${weights.length} weights for user ${userId}`);
+    res.status(200).json({ weights });
+  } catch (error) {
+    logger.error("Error fetching weights", error);
+    res.status(500).json({ message: "Internal Server error" });
+  }
+};
+export const getRecentWeights = async (
+  req: AuthRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const userId = req.userId!;
+
+    const weights = await prisma.weight.findMany({
+      where: { userId },
+      orderBy: { date: "desc" },
+      take: 7,
+    });
+    res.status(200).json({ weights });
+  } catch (error) {
+    logger.error("Get recent weights error:", error);
+    res.status(500).json({ message: "Failed to get recent weights" });
+  }
+};

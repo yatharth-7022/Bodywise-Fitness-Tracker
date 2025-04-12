@@ -9,20 +9,20 @@ import {
   PRESIGNUP,
   SIGNUP,
   LOG_WEIGHT,
+  WEIGHTS,
 } from "./routes/routes";
 import { PreSignUp } from "./pages/PreSignUp";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import { LogWeight } from "./pages/LogWeight";
 import { Toaster } from "react-hot-toast";
+import { AllWeights } from "./components/AllWeights";
 
 function App() {
   const isAuthenticated = () => {
-    // In a real application, you would check for a token, session, etc.
     return true;
   };
 
-  // Private Route component to protect routes that require authentication
   const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
     return isAuthenticated() ? children : <Navigate to={LOGIN} />;
   };
@@ -48,6 +48,14 @@ function App() {
           element={
             <PrivateRoute>
               <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={WEIGHTS}
+          element={
+            <PrivateRoute>
+              <AllWeights />
             </PrivateRoute>
           }
         />

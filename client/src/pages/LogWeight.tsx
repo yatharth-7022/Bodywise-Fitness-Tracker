@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ArrowLeft, Plus, Scale, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -15,42 +14,31 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip,
   ResponsiveContainer,
 } from "recharts";
 import { format } from "date-fns";
-import { DASHBOARD } from "@/routes/routes";
-import { useNavigate } from "react-router-dom";
+import { WEIGHTS, DASHBOARD } from "@/routes/routes";
 
-const weightData = [
-  { date: "2024-01-01", weight: 75 },
-  { date: "2024-01-08", weight: 74.5 },
-  { date: "2024-01-15", weight: 74.2 },
-  { date: "2024-01-22", weight: 73.8 },
-  { date: "2024-01-29", weight: 73.5 },
-  { date: "2024-02-05", weight: 73.2 },
-  { date: "2024-02-12", weight: 72.8 },
-].map((entry) => ({
-  ...entry,
-  formattedDate: format(new Date(entry.date), "MMM d"),
-}));
+import { WeightResponse } from "@/types/weights";
+import { useNavigate } from "react-router-dom";
+import { useWeights } from "@/hooks/useWeights";
+// import { useWeights } from "@/hooks/useWeights";
 
 export const LogWeight = () => {
+  const { handleSubmit, handleInputChange, formData, recentWeights } =
+    useWeights();
   const navigate = useNavigate();
-  const [weight, setWeight] = useState("");
-  const [note, setNote] = useState("");
+  const weightData = recentWeights?.weights.map((entry: WeightResponse) => ({
+    ...entry,
+    formattedDate: format(new Date(entry.date), "MMM d"),
+  }));
+  console.log(recentWeights);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log({ weight, note, date: new Date() });
-    setWeight("");
-    setNote("");
-  };
-
-  const latestWeight = weightData[weightData.length - 1].weight;
-  const previousWeight = weightData[weightData.length - 2].weight;
+  const latestWeight = recentWeights?.weights[0].value;
+  const previousWeight = recentWeights?.weights[1].value;
   const weightDiff = latestWeight - previousWeight;
   const isWeightDown = weightDiff < 0;
+  console.log(latestWeight, previousWeight);
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
@@ -98,9 +86,10 @@ export const LogWeight = () => {
                 <Input
                   type="number"
                   step="0.1"
+                  name="value"
                   placeholder="0.0"
-                  value={weight}
-                  onChange={(e) => setWeight(e.target.value)}
+                  value={formData.value}
+                  onChange={handleInputChange}
                   className="bg-zinc-900 border-zinc-800 text-white pl-12 h-14 text-lg"
                   required
                 />
@@ -115,9 +104,10 @@ export const LogWeight = () => {
               </label>
               <Input
                 type="text"
+                name="note"
                 placeholder="How are you feeling today?"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
+                value={formData.note}
+                onChange={handleInputChange}
                 className="bg-zinc-900 border-zinc-800 text-white h-14"
               />
             </div>
@@ -166,16 +156,10 @@ export const LogWeight = () => {
                         tick={{ fill: "#6B7280" }}
                         domain={["dataMin - 1", "dataMax + 1"]}
                       />
-                      <Tooltip
-                        contentStyle={{
-                          backgroundColor: "#18181B",
-                          border: "1px solid #374151",
-                        }}
-                        labelStyle={{ color: "#D1D5DB" }}
-                      />
+
                       <Line
                         type="monotone"
-                        dataKey="weight"
+                        dataKey="value"
                         stroke="#3B82F6"
                         strokeWidth={2}
                         dot={{ fill: "#3B82F6", strokeWidth: 2 }}
@@ -188,36 +172,41 @@ export const LogWeight = () => {
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold mb-4">Recent Entries</h2>
+            <div className="flex justify-between items-center">
+              <h2 className="text-lg font-semibold ">Recent Entries</h2>
+              <Button
+                onClick={() => navigate(WEIGHTS)}
+                variant="ghost"
+                className="text-sm text-blue-400"
+              >
+                See All
+              </Button>
+            </div>
             <div className="space-y-4">
-              {weightData
-                .slice(-3)
-                .reverse()
-                .map((entry) => (
-                  <Card
-                    key={entry.date}
-                    className="bg-zinc-900 border-zinc-800"
-                  >
-                    <CardContent className="p-4">
-                      <div className="flex justify-between items-center">
-                        <div>
-                          <p className="text-sm text-zinc-400">
-                            {format(new Date(entry.date), "MMMM d, yyyy")}
-                          </p>
-                          <div className="flex items-baseline gap-1 mt-1">
-                            <span className="text-xl font-semibold">
-                              {entry.weight}
-                            </span>
-                            <span className="text-zinc-400 text-sm">kg</span>
-                          </div>
+              {recentWeights?.weights?.map((entry: WeightResponse) => (
+                <Card key={entry.id} className="bg-zinc-900 border-zinc-800">
+                  <CardContent className="p-4">
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="text-sm text-zinc-400">
+                          {format(new Date(entry.date), "MMMM d, yyyy")}
+                        </p>
+                        <div className="flex items-baseline gap-1 mt-1">
+                          <span className="text-xl font-semibold">
+                            {entry.value}
+                          </span>
+                          <span className="text-zinc-400 text-sm">kg</span>
                         </div>
-                        <Button variant="ghost" size="icon">
-                          <ArrowLeft className="h-5 w-5 rotate-180" />
-                        </Button>
+                        {entry?.note && (
+                          <p className="text-sm w-full truncate text-zinc-400">
+                            {entry.note}
+                          </p>
+                        )}
                       </div>
-                    </CardContent>
-                  </Card>
-                ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </section>
         </main>

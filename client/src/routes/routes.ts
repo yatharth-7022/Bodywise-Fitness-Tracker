@@ -9,3 +9,4 @@ export const SIGNUP = "/signup";
 export const DASHBOARD = "/dashboard";
 export const PRESIGNUP = "/presignup";
 export const LOG_WEIGHT = "/log-weight";
+export const WEIGHTS = "/weights";
