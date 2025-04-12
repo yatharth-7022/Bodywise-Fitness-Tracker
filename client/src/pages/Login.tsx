@@ -17,7 +17,6 @@ export default function Login() {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
-    // Clear error when user starts typing
     if (errors[id as keyof LoginData]) {
       setErrors({ ...errors, [id]: "" });
     }
@@ -25,11 +24,9 @@ export default function Login() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrors({}); // Clear previous errors
-
+    setErrors({});
     loginMutation.mutate(formData, {
       onError: (error: Error) => {
-        // Handle backend validation errors
         try {
           const errorData = JSON.parse(error.message);
           if (Array.isArray(errorData.errors)) {
@@ -40,7 +37,6 @@ export default function Login() {
             setErrors(fieldErrors);
           }
         } catch {
-          // If error message is not JSON, it's a general error
           setErrors({ email: error.message });
         }
       },

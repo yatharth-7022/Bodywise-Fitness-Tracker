@@ -2,11 +2,20 @@ import "./App.css";
 import { Navigate, Route, BrowserRouter, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Dashboard } from "./pages/Dashboard";
-import { DASHBOARD, HOME, LOGIN, PRESIGNUP, SIGNUP } from "./routes/routes";
+import {
+  DASHBOARD,
+  HOME,
+  LOGIN,
+  PRESIGNUP,
+  SIGNUP,
+  LOG_WEIGHT,
+} from "./routes/routes";
 import { PreSignUp } from "./pages/PreSignUp";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import { LogWeight } from "./pages/LogWeight";
 import { Toaster } from "react-hot-toast";
+
 function App() {
   const isAuthenticated = () => {
     // In a real application, you would check for a token, session, etc.
@@ -17,6 +26,7 @@ function App() {
   const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
     return isAuthenticated() ? children : <Navigate to={LOGIN} />;
   };
+
   return (
     <BrowserRouter>
       <Toaster position="top-right" reverseOrder={false} />
@@ -25,7 +35,14 @@ function App() {
         <Route path={LOGIN} element={<Login />} />
         <Route path={SIGNUP} element={<SignUp />} />
         <Route path={PRESIGNUP} element={<PreSignUp />} />
-
+        <Route
+          path={LOG_WEIGHT}
+          element={
+            <PrivateRoute>
+              <LogWeight />
+            </PrivateRoute>
+          }
+        />
         <Route
           path={DASHBOARD}
           element={

@@ -16,8 +16,11 @@ import shoulderWorkout from "@/assets/image/shoulder-workout.webp";
 import chestWorkout from "@/assets/image/chest-workout.jpg";
 import { WeeklyActivityChart } from "@/components/WeeklyActivityChart";
 import { MonthlyVolumeChart } from "@/components/MonthlyVolumeChart";
+import { LOG_WEIGHT } from "@/routes/routes";
+import { useNavigate } from "react-router-dom";
 
 export const Dashboard = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-zinc-950 text-white relative">
       <div className="max-w-[100vw] overflow-hidden">
@@ -43,7 +46,9 @@ export const Dashboard = () => {
             <div className="grid grid-cols-3 gap-2">
               <Button
                 className="bg-blue-600 hover:bg-blue-700 w-full px-2 py-1 text-xs sm:text-sm"
-                onClick={() => {}}
+                onClick={() => {
+                  navigate(LOG_WEIGHT);
+                }}
               >
                 <Scale className="w-4 h-4 mr-1" />
                 Log Weight
