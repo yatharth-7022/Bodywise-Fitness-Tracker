@@ -1,6 +1,19 @@
 import { body, validationResult } from "express-validator";
 import { Request, Response, NextFunction } from "express";
 
+export const handleValidationErrors = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    res.status(400).json({ errors: errors.array() });
+    return;
+  }
+  next();
+};
+
 export const validateSignup = [
   body("name")
     .trim()
@@ -43,15 +56,30 @@ export const validateLogin = [
   body("password").trim().notEmpty().withMessage("Password is required"),
 ];
 
-export const handleValidationErrors = (
-  req: Request,
-  res: Response,
-  next: NextFunction
-): void => {
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    res.status(400).json({ errors: errors.array() });
-    return;
-  }
-  next();
-};
+export const validateWeightLog = [
+  body("value")
+    .notEmpty()
+    .withMessage("Weight value is required")
+    .isFloat({ min: 20, max: 500 })
+    .withMessage("Weight must be between 20 and 500 kg"),
+
+  body("note")
+    .optional()
+    .isString()
+    .trim()
+    .isLength({ max: 500 })
+    .withMessage("Note cannot be longer than 500 characters"),
+
+  body("date")
+    .optional()
+    .isISO8601()
+    .withMessage("Invalid date format")
+    .custom((value) => {
+      const date = new Date(value);
+      const now = new Date();
+      if (date > now) {
+        throw new Error("Date cannot be in the future");
+      }
+      return true;
+    }),
+];
