@@ -48,8 +48,12 @@ export default function SignUp(): JSX.Element {
             });
             setErrors(fieldErrors);
           }
-        } catch (error) {
-          toast.error(error.message);
+        } catch (error: unknown) {
+          if (error instanceof Error) {
+            toast.error(error.message);
+          } else {
+            toast.error("An unexpected error occurred");
+          }
         }
       },
     });
