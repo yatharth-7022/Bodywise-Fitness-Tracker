@@ -8,9 +8,24 @@ datasource db {
 }
 
 model User {
-  id       Int     @id @default(autoincrement())
-  name     String
-  email    String  @unique
-  password String
+  id        Int      @id @default(autoincrement())
+  name      String
+  email     String   @unique
+  password  String
+  weights   Weight[] 
   createdAt DateTime @default(now())
+  updatedAt DateTime? @updatedAt  
+}
+
+model Weight {
+  id        Int      @id @default(autoincrement())
+  value     Float    
+  note      String?  
+  date      DateTime @default(now())
+  userId    Int      
+  user      User     @relation(fields: [userId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId]) 
 }

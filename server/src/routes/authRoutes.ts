@@ -1,13 +1,13 @@
 import { Router, Request, Response, NextFunction } from "express";
 import { signup, login, getUser } from "../controllers/authController";
 import { protect } from "../middleware/authMiddleware";
-import {
-  validateSignup,
-  validateLogin,
-  handleValidationErrors,
-} from "../middleware/validationMiddleware";
+
 import { authRateLimiter } from "../middleware/rateLimiter";
-import { AuthRequest } from "../middleware/authMiddleware";
+import {
+  handleValidationErrors,
+  validateLogin,
+  validateSignup,
+} from "../middleware/validationMiddleware";
 
 const router = Router();
 
