@@ -3,7 +3,7 @@ import api from "../../intercerptor";
 import { DEFAULT_ROUTINE, ROUTINE_BY_ID } from "@/api";
 import { DASHBOARD, ROUTINE } from "@/routes/routes";
 import { useLocation, useParams } from "react-router-dom";
-import { DefaultRoutine } from "@/types/dashboard";
+import { DefaultRoutine, Routine } from "@/types/dashboard";
 
 export const useDashboard = () => {
   const location = useLocation();
@@ -17,12 +17,12 @@ export const useDashboard = () => {
       );
       return response.data;
     },
-    // staleTime: 1000 * 60 * 60 * 24,
+    staleTime: 1000 * 60 * 60 * 24,
     enabled: location.pathname === DASHBOARD,
     refetchOnWindowFocus: false,
   });
 
-  const { data: routineById } = useQuery({
+  const { data: routineById } = useQuery<Routine>({
     queryKey: ["routine-by-id"],
     queryFn: async () => {
       const response = await api.get(`${ROUTINE_BY_ID}${id}`);
