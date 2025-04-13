@@ -1,5 +1,5 @@
-import { LOGIN, SIGNUP } from "@/api";
-import { useMutation } from "@tanstack/react-query";
+import { LOGIN, SIGNUP, USER_INFO } from "@/api";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DASHBOARD } from "@/routes/routes";
@@ -43,10 +43,20 @@ export const useAuth = () => {
     },
   });
 
+  const { data: userData } = useQuery({
+    queryKey: ["user"],
+    queryFn: async () => {
+      const response = await api.get(USER_INFO);
+      return response.data;
+    },
+    enabled: !!localStorage.getItem("token"),
+  });
+
   return {
     signUpMutation,
     isLoading: signUpMutation.isPending,
     loginMutation,
     isLoginLoading: loginMutation.isPending,
+    userData,
   };
 };

@@ -14,6 +14,16 @@ import {
   getWeightLogs,
   logWeight,
 } from "../controllers/weightController";
+import {
+  getAllExercises,
+  getExerciseById,
+  getExercisesByBodyPart,
+} from "../controllers/exerciseController";
+import {
+  getAllRoutines,
+  getDefaultRoutines,
+  getRoutineById,
+} from "../controllers/routineController";
 
 const router = Router();
 
@@ -26,5 +36,11 @@ router.get("/user", protect, getUser);
 router.post("/", validateWeightLog, handleValidationErrors, logWeight);
 router.get("/", getWeightLogs);
 router.get("/recent-weights", getRecentWeights);
+router.get("/exercises", getAllExercises);
+router.get("/exercises/:id", getExerciseById);
+router.get("/exercises/:bodyPart", getExercisesByBodyPart);
+router.get("/routines", getAllRoutines);
+router.get("/routines/:id", getRoutineById);
+router.get("/routines/default", getDefaultRoutines);
 
 export default router;
