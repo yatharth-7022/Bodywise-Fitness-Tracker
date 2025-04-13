@@ -7,11 +7,14 @@ import logger from "./utils/logger";
 import weightRoutes from "./routes/routes";
 import exerciseRoutes from "./routes/routes";
 import routineRoutes from "./routes/routes";
+import path from "path";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, "../public")));
 app.use(
   morgan("combined", {
     stream: { write: (message) => logger.info(message.trim()) },

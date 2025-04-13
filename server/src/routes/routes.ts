@@ -40,7 +40,7 @@ router.get("/exercises", getAllExercises);
 router.get("/exercises/:id", getExerciseById);
 router.get("/exercises/:bodyPart", getExercisesByBodyPart);
 router.get("/routines", getAllRoutines);
-router.get("/routines/:id", getRoutineById);
 router.get("/routines/default", getDefaultRoutines);
+router.get("/routines/:id", getRoutineById);
 
 export default router;

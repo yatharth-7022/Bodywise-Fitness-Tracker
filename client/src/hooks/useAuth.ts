@@ -49,7 +49,9 @@ export const useAuth = () => {
       const response = await api.get(USER_INFO);
       return response.data;
     },
-    enabled: !!localStorage.getItem("token"),
+    enabled: location.pathname === DASHBOARD,
+    staleTime: 1000 * 60 * 60 * 24,
+    refetchOnWindowFocus: false,
   });
 
   return {

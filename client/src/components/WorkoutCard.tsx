@@ -1,23 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { ROUTINE } from "@/routes/routes";
+import { WorkoutCardProps } from "@/types/dashboard";
 import { Clock, Flame } from "lucide-react";
-
-interface WorkoutCardProps {
-  title: string;
-  duration: string;
-  calories: string;
-  image: string;
-  lastExercised: string;
-}
+import { useNavigate } from "react-router-dom";
 
 export const WorkoutCard = ({
   title,
   duration,
   calories,
   image,
-  lastExercised,
+  description,
+  id,
 }: WorkoutCardProps) => {
+  const navigate = useNavigate();
+  const handleCardClick = () => {
+    navigate(`${ROUTINE}/${title}/${id}`);
+  };
   return (
-    <Card className="w-[280px] bg-zinc-900 border-zinc-800 overflow-hidden">
+    <Card
+      onClick={handleCardClick}
+      className="w-[280px] bg-zinc-900 border-zinc-800 overflow-hidden"
+    >
       <div
         className="h-36 bg-cover bg-center"
         style={{
@@ -36,7 +39,7 @@ export const WorkoutCard = ({
             {calories}
           </div>
         </div>
-        <p className="text-xs text-zinc-500">{lastExercised}</p>
+        <p className="text-xs text-zinc-500">{description}</p>
       </CardContent>
     </Card>
   );
