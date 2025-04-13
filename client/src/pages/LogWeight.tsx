@@ -34,8 +34,8 @@ export const LogWeight = () => {
   }));
   console.log(recentWeights);
 
-  const latestWeight = recentWeights?.weights[0].value;
-  const previousWeight = recentWeights?.weights[1].value;
+  const latestWeight = recentWeights?.weights[0]?.value;
+  const previousWeight = recentWeights?.weights[1]?.value;
   const weightDiff = latestWeight - previousWeight;
   const isWeightDown = weightDiff < 0;
   console.log(latestWeight, previousWeight);

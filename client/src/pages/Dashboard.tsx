@@ -18,8 +18,10 @@ import { WeeklyActivityChart } from "@/components/WeeklyActivityChart";
 import { MonthlyVolumeChart } from "@/components/MonthlyVolumeChart";
 import { LOG_WEIGHT } from "@/routes/routes";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "@/hooks/useAuth";
 
 export const Dashboard = () => {
+  const { userData } = useAuth();
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-zinc-950 text-white relative">
@@ -32,7 +34,7 @@ export const Dashboard = () => {
             </Avatar>
             <div>
               <p className="text-zinc-400 text-sm">Good morning!</p>
-              <h1 className="text-xl font-semibold">Mohamed</h1>
+              <h1 className="text-xl font-semibold">{userData?.user?.name}</h1>
             </div>
           </div>
           <Button variant="ghost" size="icon">

@@ -5,6 +5,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import logger from "./utils/logger";
 import weightRoutes from "./routes/routes";
+import exerciseRoutes from "./routes/routes";
+import routineRoutes from "./routes/routes";
 
 const app = express();
 
@@ -18,6 +20,9 @@ app.use(
 
 app.use("/api/auth", authRoutes);
 app.use("/api/weight", weightRoutes);
+app.use("/api/exercises", exerciseRoutes);
+app.use("/api/routines", routineRoutes);
+
 app.use(
   (
     err: Error,
@@ -29,6 +34,7 @@ app.use(
     res.status(500).json({ message: "Something went wrong!" });
   }
 );
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
