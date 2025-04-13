@@ -1,4 +1,4 @@
-import { Settings, Timer, Scale, Plus } from "lucide-react";
+import { Settings, Timer, Scale } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -10,19 +10,25 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { WorkoutCard } from "@/components/WorkoutCard";
-import backWorkout from "@/assets/image/back-workout.jpg";
-import legWorkout from "@/assets/image/leg-workouit.jpg";
-import shoulderWorkout from "@/assets/image/shoulder-workout.webp";
-import chestWorkout from "@/assets/image/chest-workout.jpg";
+// import backWorkout from "@/assets/image/back-workout.jpg";
+// import legWorkout from "@/assets/image/leg-workouit.jpg";
+// import shoulderWorkout from "@/assets/image/shoulder-workout.webp";
+// import chestWorkout from "@/assets/image/chest-workout.jpg";
 import { WeeklyActivityChart } from "@/components/WeeklyActivityChart";
 import { MonthlyVolumeChart } from "@/components/MonthlyVolumeChart";
 import { LOG_WEIGHT } from "@/routes/routes";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useDashboard } from "@/hooks/useDashboard";
+import { DefaultRoutine } from "@/types/dashboard";
 
 export const Dashboard = () => {
+  const { defaultRoutines } = useDashboard();
   const { userData } = useAuth();
   const navigate = useNavigate();
+  const defaultRoutinesWithImage = defaultRoutines?.filter(
+    (routine: DefaultRoutine) => routine.imageUrl !== null
+  );
   return (
     <div className="min-h-screen bg-zinc-950 text-white relative">
       <div className="max-w-[100vw] overflow-hidden">
@@ -80,34 +86,19 @@ export const Dashboard = () => {
             </div>
             <ScrollArea className="w-full">
               <div className="flex space-x-4 pb-4">
-                <WorkoutCard
-                  title="Chest Day"
-                  duration="35 min"
-                  calories="90 cals"
-                  image={chestWorkout}
-                  lastExercised="Last exercised on 12/5/2023"
-                />
-                <WorkoutCard
-                  title="Back Day"
-                  duration="35 min"
-                  calories="85 cals"
-                  image={backWorkout}
-                  lastExercised="Last exercised on 12/4/2023"
-                />
-                <WorkoutCard
-                  title="Leg Day"
-                  duration="40 min"
-                  calories="100 cals"
-                  image={legWorkout}
-                  lastExercised="Last exercised on 12/3/2023"
-                />
-                <WorkoutCard
-                  title="Shoulder Day"
-                  duration="30 min"
-                  calories="75 cals"
-                  image={shoulderWorkout}
-                  lastExercised="Last exercised on 12/2/2023"
-                />
+                {defaultRoutinesWithImage?.map((routine: DefaultRoutine) => (
+                  <WorkoutCard
+                    key={routine?.id}
+                    id={routine?.id}
+                    title={routine?.name}
+                    duration="35 min"
+                    calories="90 cals"
+                    image={`${import.meta.env.VITE_API_URL}${
+                      routine?.imageUrl
+                    }`}
+                    description={routine?.description}
+                  />
+                ))}
               </div>
               <ScrollBar orientation="horizontal" />
             </ScrollArea>
@@ -167,65 +158,8 @@ export const Dashboard = () => {
           </section>
         </main>
       </div>
-
-      <nav className="fixed bottom-0 left-0 right-0 bg-zinc-900 border-t border-zinc-800 px-6 py-2">
-        <div className="flex justify-between items-center">
-          <Button variant="ghost" className="text-blue-400">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-          </Button>
-          <Button variant="ghost">
-            <Timer className="w-6 h-6" />
-          </Button>
-          <Button
-            size="lg"
-            className="rounded-full bg-blue-600 hover:bg-blue-700 h-14 w-14 flex items-center justify-center"
-          >
-            <Plus className="w-6 h-6" />
-          </Button>
-          <Button variant="ghost">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-          </Button>
-          <Button variant="ghost">
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-          </Button>
-        </div>
-      </nav>
     </div>
   );
 };
+
+export default Dashboard;

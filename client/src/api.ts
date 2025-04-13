@@ -5,3 +5,5 @@ export const USER_INFO = `${BASE_URL}/auth/user`;
 export const WEIGHT_LOG = `${BASE_URL}/weight`;
 export const RECENT_WEIGHTS = `${BASE_URL}/weight/recent-weights`;
 export const ALL_WEIGHTS = `${BASE_URL}/weight`;
+export const DEFAULT_ROUTINE = `${BASE_URL}/routines/routines/default`;
+export const ROUTINE_BY_ID = `${BASE_URL}/routines/routines/`;

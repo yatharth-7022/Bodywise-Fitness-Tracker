@@ -182,13 +182,25 @@
   font-family: montserrat;
 }
 
-
-
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .app-container {
+    aspect-ratio: 414/896;
+    height: 100vh;
+    max-height: calc(896 * (100vw / 414));
+  }
+}
+
+@media (min-height: calc(896 * (100vw / 414))) {
+  .app-container {
+    height: calc(896 * (100vw / 414));
   }
 }
