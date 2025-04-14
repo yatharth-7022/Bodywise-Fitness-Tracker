@@ -46,19 +46,26 @@ async function main() {
   ]);
 
   // Create default routines
-  const routines = await Promise.all([
+  await Promise.all([
     prisma.routine.create({
       data: {
         name: "Chest Day",
         description: "A focused chest workout routine",
-        imageUrl: "/images/routines/chest-day.jpg", // You can change this URL
+        imageUrl: "/images/routines/chest-day.jpg",
+        duration: 45 * 60, // 45 minutes in seconds
         isDefault: true,
         exercises: {
           create: [
             {
               exerciseId: exercises[0].id,
               sets: 4,
-              reps: 8,
+              exerciseSets: {
+                create: Array.from({ length: 4 }).map(() => ({
+                  weight: 0,
+                  reps: 8,
+                  isCompleted: false,
+                })),
+              },
             },
           ],
         },
@@ -68,14 +75,21 @@ async function main() {
       data: {
         name: "Leg Day",
         description: "A comprehensive leg workout routine",
-        imageUrl: "/images/routines/leg-day.jpg", // You can change this URL
+        imageUrl: "/images/routines/leg-day.jpg",
+        duration: 50 * 60, // 50 minutes in seconds
         isDefault: true,
         exercises: {
           create: [
             {
               exerciseId: exercises[1].id,
               sets: 4,
-              reps: 10,
+              exerciseSets: {
+                create: Array.from({ length: 4 }).map(() => ({
+                  weight: 0,
+                  reps: 10,
+                  isCompleted: false,
+                })),
+              },
             },
           ],
         },
@@ -85,19 +99,32 @@ async function main() {
       data: {
         name: "Back Day",
         description: "A focused back workout routine",
-        imageUrl: "/images/routines/back-day.jpg", // You can change this URL
+        imageUrl: "/images/routines/back-day.jpg",
+        duration: 40 * 60, // 40 minutes in seconds
         isDefault: true,
         exercises: {
           create: [
             {
               exerciseId: exercises[2].id,
               sets: 4,
-              reps: 6,
+              exerciseSets: {
+                create: Array.from({ length: 4 }).map(() => ({
+                  weight: 0,
+                  reps: 6,
+                  isCompleted: false,
+                })),
+              },
             },
             {
               exerciseId: exercises[4].id,
               sets: 3,
-              reps: 8,
+              exerciseSets: {
+                create: Array.from({ length: 3 }).map(() => ({
+                  weight: 0,
+                  reps: 8,
+                  isCompleted: false,
+                })),
+              },
             },
           ],
         },
@@ -107,14 +134,21 @@ async function main() {
       data: {
         name: "Shoulder Day",
         description: "A focused shoulder workout routine",
-        imageUrl: "/images/routines/shoulder-day.jpg", // You can change this URL
+        imageUrl: "/images/routines/shoulder-day.jpg",
+        duration: 35 * 60, // 35 minutes in seconds
         isDefault: true,
         exercises: {
           create: [
             {
               exerciseId: exercises[3].id,
               sets: 4,
-              reps: 8,
+              exerciseSets: {
+                create: Array.from({ length: 4 }).map(() => ({
+                  weight: 0,
+                  reps: 8,
+                  isCompleted: false,
+                })),
+              },
             },
           ],
         },

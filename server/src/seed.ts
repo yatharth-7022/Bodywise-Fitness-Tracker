@@ -710,7 +710,12 @@ async function main() {
             routineId: createdRoutine.id,
             exerciseId: exerciseRecord.id,
             sets: exercise.sets,
-            reps: exercise.reps,
+            exerciseSets: {
+              create: Array.from({ length: exercise.sets }).map(() => ({
+                weight: 0,
+                reps: exercise.reps,
+              })),
+            },
           },
         });
       }
