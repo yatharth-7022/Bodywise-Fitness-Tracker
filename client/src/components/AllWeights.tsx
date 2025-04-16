@@ -10,7 +10,6 @@ import { WeightResponse } from "@/types/weights";
 
 export const AllWeights = () => {
   const { allWeights } = useWeights();
-  console.log(allWeights);
   const navigate = useNavigate();
   return (
     <div className="min-h-screen bg-zinc-950 text-white">

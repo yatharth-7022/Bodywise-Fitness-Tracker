@@ -11,3 +11,4 @@ export const PRESIGNUP = "/presignup";
 export const LOG_WEIGHT = "/log-weight";
 export const WEIGHTS = "/weights";
 export const ROUTINE = "/routine";
+export const EXERCISES = "/all-exercises";

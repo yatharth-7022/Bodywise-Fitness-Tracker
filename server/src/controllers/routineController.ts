@@ -54,7 +54,6 @@ export const getDefaultRoutines = async (req: Request, res: Response) => {
   try {
     const includeExercises = req.query.includeExercises !== "false";
 
-    console.log("Fetching default routines...");
     const routines = await prisma.routine.findMany({
       where: { isDefault: true },
       include: includeExercises
@@ -68,7 +67,6 @@ export const getDefaultRoutines = async (req: Request, res: Response) => {
         : undefined,
     });
 
-    console.log(`Found ${routines.length} default routines`);
     res.json(routines);
   } catch (error) {
     console.error("Error in getDefaultRoutines:", error);

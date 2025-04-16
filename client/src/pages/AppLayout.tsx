@@ -1,7 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Plus, Timer } from "lucide-react";
+import { DASHBOARD, EXERCISES } from "@/routes/routes";
+import { Dumbbell, Plus, Timer } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen flex justify-center bg-zinc-950">
       <div className="w-full max-w-[414px] flex flex-col relative bg-zinc-950 text-white">
@@ -10,7 +13,11 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         </main>
         <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[414px] bg-zinc-900 border-t border-zinc-800 px-6 py-1">
           <div className="flex justify-between items-center">
-            <Button variant="ghost" className="text-blue-400">
+            <Button
+              onClick={() => navigate(DASHBOARD)}
+              variant="ghost"
+              className="text-blue-400"
+            >
               <svg
                 className="w-4 h-4"
                 fill="none"
@@ -34,20 +41,8 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
             >
               <Plus className="w-4 h-4" />
             </Button>
-            <Button variant="ghost">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
+            <Button onClick={() => navigate(EXERCISES)} variant="ghost">
+              <Dumbbell />
             </Button>
             <Button variant="ghost">
               <svg
