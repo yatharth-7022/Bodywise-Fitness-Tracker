@@ -20,11 +20,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/server.ts",
-    "build": "tsc",
+    "build": "tsc && copy dist\\seed.js prisma\\",
     "start": "node dist/server.js",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
-    "prisma:seed": "ts-node src/seed.ts"
+    "prisma:seed": "prisma db seed",
+    "prisma:studio": "prisma studio"
   },
   "keywords": [],
   "author": "",
@@ -42,6 +43,6 @@
     "typescript": "^5.8.3"
   },
   "prisma": {
-    "seed": "ts-node ./src/seed.ts"
+    "seed": "node dist/seed.js"
   }
 }

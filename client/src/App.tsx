@@ -11,6 +11,7 @@ import {
   LOG_WEIGHT,
   WEIGHTS,
   ROUTINE,
+  EXERCISES,
 } from "./routes/routes";
 import { PreSignUp } from "./pages/PreSignUp";
 import SignUp from "./pages/SignUp";
@@ -21,6 +22,7 @@ import { AllWeights } from "./components/AllWeights";
 import { AppLayout } from "./pages/AppLayout";
 import Routine from "./components/Routine";
 import Dashboard from "@/pages/Dashboard";
+import { ALlExercises } from "./components/Exercise/AllExercises";
 
 function App() {
   const isAuthenticated = () => {
@@ -61,6 +63,14 @@ function App() {
             element={
               <PrivateRoute>
                 <AllWeights />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={EXERCISES}
+            element={
+              <PrivateRoute>
+                <ALlExercises />
               </PrivateRoute>
             }
           />

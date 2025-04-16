@@ -14,7 +14,6 @@ import { firstLetterUppercase } from "@/utils/handlerFunctions";
 const Routine = () => {
   const { routineById } = useDashboard();
   const navigate = useNavigate();
-  console.log({ routineById });
   return (
     <div className=" h-full w-full max-w-md mx-auto overflow-hidden">
       <div className="relative h-full">
