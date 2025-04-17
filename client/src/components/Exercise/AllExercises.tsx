@@ -2,6 +2,7 @@ import { useExercises } from "@/hooks/useExercises";
 import { Search } from "lucide-react";
 import { ExerciseCardContent } from "./ExerciseCard";
 import { ExerciseDrawer } from "./ExerciseDrawer";
+import { useState } from "react";
 
 const bodyParts = ["All", "Chest", "Back", "Arms", "Shoulders", "Legs"];
 
@@ -16,14 +17,23 @@ export const ALlExercises = () => {
     setActiveFilter,
   } = useExercises();
 
-  const filteredExercises =
-    activeFilter === "All"
-      ? allExercises
-      : allExercises?.filter((exercise) => {
-          return (
-            exercise?.bodyPart?.toLowerCase() === activeFilter.toLowerCase()
-          );
-        });
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredExercises = allExercises?.filter((exercise) => {
+    const matchesBodyPart =
+      activeFilter === "All" ||
+      exercise?.bodyPart?.toLowerCase() === activeFilter.toLowerCase();
+
+    const matchesSearch =
+      searchQuery === "" ||
+      exercise?.name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      exercise?.description
+        ?.toLowerCase()
+        .includes(searchQuery.toLowerCase()) ||
+      exercise?.bodyPart?.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return matchesBodyPart && matchesSearch;
+  });
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
@@ -36,6 +46,8 @@ export const ALlExercises = () => {
                 type="text"
                 placeholder="Search exercises..."
                 className="bg-gray-800 rounded-full py-2 px-4 pl-10 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400" />
             </div>
