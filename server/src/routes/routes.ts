@@ -32,7 +32,9 @@ router.use(protect);
 
 router.post("/signup", validateSignup, handleValidationErrors, signup);
 router.post("/login", validateLogin, handleValidationErrors, login);
-router.get("/user", protect, getUser);
+router.use(protect);
+router.get("/user", getUser);
+
 router.post("/", validateWeightLog, handleValidationErrors, logWeight);
 router.get("/", getWeightLogs);
 router.get("/recent-weights", getRecentWeights);
