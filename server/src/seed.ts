@@ -13,7 +13,7 @@ async function main() {
           "A compound exercise that targets the chest, shoulders, and triceps. Lie on a bench and press a barbell upward from your chest.",
         bodyPart: "Chest",
         imageUrl: "/exercises/bench-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/rT7DgCr-3pg",
+        videoUrl: "https://www.youtube.com/watch?v=rT7DgCr-3pg",
       },
     }),
     prisma.exercise.create({
@@ -23,7 +23,7 @@ async function main() {
           "An isolation exercise that targets the chest muscles. Lie on a bench and move dumbbells in an arc motion.",
         bodyPart: "Chest",
         imageUrl: "/exercises/chest-fly.jpg",
-        videoUrl: "https://www.youtube.com/embed/eozdVDA78K0",
+        videoUrl: "https://www.youtube.com/watch?v=eozdVDA78K0",
       },
     }),
     prisma.exercise.create({
@@ -33,7 +33,7 @@ async function main() {
           "A variation of the bench press that targets the upper chest. Performed on an inclined bench with dumbbells.",
         bodyPart: "Chest",
         imageUrl: "/exercises/incline-dumbbell-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/8iPEn9-lWjs",
+        videoUrl: "https://www.youtube.com/watch?v=5CECBjd7HLQ",
       },
     }),
     prisma.exercise.create({
@@ -43,7 +43,7 @@ async function main() {
           "An isolation exercise that targets the chest muscles using cable machines. Provides constant tension throughout the movement.",
         bodyPart: "Chest",
         imageUrl: "/exercises/cable-crossover.jpg",
-        videoUrl: "https://www.youtube.com/embed/taI4XduLpTk",
+        videoUrl: "https://www.youtube.com/watch?v=Iwe6AmxVf7o",
       },
     }),
     prisma.exercise.create({
@@ -53,17 +53,17 @@ async function main() {
           "A bodyweight exercise that targets the chest, shoulders, and triceps. Can be modified for different difficulty levels.",
         bodyPart: "Chest",
         imageUrl: "/exercises/push-ups.jpg",
-        videoUrl: "https://www.youtube.com/embed/IODxDxX7oi4",
+        videoUrl: "https://www.youtube.com/watch?v=WDIpL0pjun0",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Decline Bench Press",
+        name: "Decline Dumbbell Bench Press",
         description:
           "A variation of the bench press that targets the lower chest. Performed on a declined bench.",
         bodyPart: "Chest",
         imageUrl: "/exercises/decline-bench-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/LfyQBUKR8SE",
+        videoUrl: "https://www.youtube.com/watch?v=0xRvl4Qv3ZY",
       },
     }),
     prisma.exercise.create({
@@ -73,19 +73,10 @@ async function main() {
           "An isolation exercise that targets the chest muscles using a machine. Provides controlled movement and stability.",
         bodyPart: "Chest",
         imageUrl: "/exercises/pec-deck.jpg",
-        videoUrl: "https://www.youtube.com/embed/1fD9xU0fORU",
+        videoUrl: "https://www.youtube.com/watch?v=sAeDw6xhFFw",
       },
     }),
-    prisma.exercise.create({
-      data: {
-        name: "Dips",
-        description:
-          "A compound exercise that targets the chest, shoulders, and triceps. Can be performed using parallel bars or a dip machine.",
-        bodyPart: "Chest",
-        imageUrl: "/exercises/dips.jpg",
-        videoUrl: "https://www.youtube.com/embed/2z8JmcrW-As",
-      },
-    }),
+
     prisma.exercise.create({
       data: {
         name: "Machine Chest Press",
@@ -93,7 +84,7 @@ async function main() {
           "A compound exercise that targets the chest muscles using a machine. Provides stability and controlled movement.",
         bodyPart: "Chest",
         imageUrl: "/exercises/machine-chest-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/RO21W1GA",
+        videoUrl: "https://www.youtube.com/watch?v=vnd-GBtTMLI",
       },
     }),
     prisma.exercise.create({
@@ -103,7 +94,7 @@ async function main() {
           "An isolation exercise that targets the upper chest using cable machines. Provides constant tension throughout the movement.",
         bodyPart: "Chest",
         imageUrl: "/exercises/incline-chest-fly.jpg",
-        videoUrl: "https://www.youtube.com/embed/0zBzb9aHw7I",
+        videoUrl: "https://www.youtube.com/watch?v=e_8HLu59-to",
       },
     }),
     prisma.exercise.create({
@@ -113,7 +104,7 @@ async function main() {
           "A compound exercise that targets the chest and shoulders using a barbell anchored in a landmine attachment.",
         bodyPart: "Chest",
         imageUrl: "/exercises/landmine-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=t9GuiNQo1O4",
       },
     }),
     prisma.exercise.create({
@@ -123,7 +114,7 @@ async function main() {
           "An isolation exercise that targets the chest muscles using weight plates. Focuses on the inner chest.",
         bodyPart: "Chest",
         imageUrl: "/exercises/svend-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=cIoUZOnypS8",
       },
     }),
     prisma.exercise.create({
@@ -133,7 +124,7 @@ async function main() {
           "A variation of the bench press performed on the floor. Limits range of motion and focuses on the upper portion of the press.",
         bodyPart: "Chest",
         imageUrl: "/exercises/floor-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=T0Y3OBF1bNI",
       },
     }),
     prisma.exercise.create({
@@ -143,7 +134,7 @@ async function main() {
           "A variation of the bench press using a Smith machine. Provides stability and controlled movement.",
         bodyPart: "Chest",
         imageUrl: "/exercises/smith-bench-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=O5viuEPDXKY",
       },
     }),
     prisma.exercise.create({
@@ -153,7 +144,7 @@ async function main() {
           "A variation of the bench press using a machine. Provides stability and controlled movement.",
         bodyPart: "Chest",
         imageUrl: "/exercises/incline-machine-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=tiWPSwt8_zM",
       },
     }),
     prisma.exercise.create({
@@ -163,7 +154,7 @@ async function main() {
           "A variation of push-ups that focuses on explosive power. Can be modified for different difficulty levels.",
         bodyPart: "Chest",
         imageUrl: "/exercises/explosive-push-ups.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=CvgV8W98inA",
       },
     }),
     prisma.exercise.create({
@@ -183,7 +174,7 @@ async function main() {
           "A compound exercise that targets the chest, shoulders, and triceps. Can be performed using parallel bars or a dip machine.",
         bodyPart: "Chest",
         imageUrl: "/exercises/chest-dips.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=cz6IAayKzNA",
       },
     }),
     prisma.exercise.create({
@@ -193,7 +184,7 @@ async function main() {
           "An isolation exercise that targets the chest muscles. Focuses on the contraction phase of the movement.",
         bodyPart: "Chest",
         imageUrl: "/exercises/isometric-chest-squeeze.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=anxpxp0rbHs",
       },
     }),
 
@@ -205,7 +196,7 @@ async function main() {
           "A compound exercise that targets the shoulders and triceps. Press a barbell or dumbbells overhead while standing or seated.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/overhead-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/2yjwXTZQDDI",
+        videoUrl: "https://www.youtube.com/watch?v=F3QY5vMz_6I",
       },
     }),
     prisma.exercise.create({
@@ -215,7 +206,7 @@ async function main() {
           "An isolation exercise that targets the side deltoids. Raise dumbbells or cables to the sides while keeping arms straight.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/lateral-raises.jpg",
-        videoUrl: "https://www.youtube.com/embed/3VcKaXpzqRo",
+        videoUrl: "https://www.youtube.com/watch?v=OuG1smZTsQQ",
       },
     }),
     prisma.exercise.create({
@@ -225,7 +216,7 @@ async function main() {
           "An isolation exercise that targets the front deltoids. Raise dumbbells or a barbell in front of the body.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/front-raises.jpg",
-        videoUrl: "https://www.youtube.com/embed/-t7fuZ0KhDA",
+        videoUrl: "https://www.youtube.com/watch?v=hRJ6tR5-if0",
       },
     }),
     prisma.exercise.create({
@@ -235,7 +226,7 @@ async function main() {
           "An exercise that targets the rear deltoids and upper back. Pull a cable attachment towards the face while keeping elbows high.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/face-pulls.jpg",
-        videoUrl: "https://www.youtube.com/embed/rep-qVOkqgk",
+        videoUrl: "https://www.youtube.com/watch?v=-MODnZdnmAQ",
       },
     }),
     prisma.exercise.create({
@@ -245,7 +236,7 @@ async function main() {
           "A variation of the overhead press that targets all three heads of the deltoids. Rotate the dumbbells during the movement.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/arnold-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=6Z15_WdXmVw",
       },
     }),
     prisma.exercise.create({
@@ -255,7 +246,7 @@ async function main() {
           "An isolation exercise that targets the rear deltoids. Move dumbbells or cables in an arc motion while keeping arms straight.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/rear-delt-fly.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=d_feFQGGVh4",
       },
     }),
     prisma.exercise.create({
@@ -265,7 +256,7 @@ async function main() {
           "An isolation exercise that targets the side deltoids using cable machines. Provides constant tension throughout the movement.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/cable-lateral-raise.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=lq7eLC30b9w",
       },
     }),
     prisma.exercise.create({
@@ -275,7 +266,7 @@ async function main() {
           "A compound exercise that targets the shoulders and triceps. Press a barbell overhead while standing.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/standing-military-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=G2qpTG1Eh40",
       },
     }),
     prisma.exercise.create({
@@ -285,7 +276,7 @@ async function main() {
           "A compound exercise that targets the shoulders and upper back. Pull a barbell or dumbbells up towards the chin.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/upright-row.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=um3VVzqunPU",
       },
     }),
     prisma.exercise.create({
@@ -295,7 +286,7 @@ async function main() {
           "An isolation exercise that targets the trapezius muscles. Raise the shoulders towards the ears.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/shrugs.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=_t3lrPI6Ns4",
       },
     }),
     prisma.exercise.create({
@@ -305,7 +296,7 @@ async function main() {
           "An isolation exercise that targets the rear deltoids using a machine. Provides controlled movement and stability.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/reverse-pec-deck.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=5YK4bgzXDp0",
       },
     }),
     prisma.exercise.create({
@@ -315,7 +306,7 @@ async function main() {
           "A variation of the overhead press that targets the shoulders and core. Performed while sitting on the floor.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/z-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=0fHdnBH9Gdo",
       },
     }),
     prisma.exercise.create({
@@ -325,7 +316,7 @@ async function main() {
           "A compound exercise that targets the rear deltoids and upper back. Row a barbell or dumbbells towards the torso.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/rear-delt-row.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=t-llLcNvsro",
       },
     }),
     prisma.exercise.create({
@@ -335,7 +326,7 @@ async function main() {
           "An isolation exercise that targets the upper back and rear deltoids. Raise dumbbells in a Y-shape.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/y-raises.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=U7Pdw5wFGh0",
       },
     }),
     prisma.exercise.create({
@@ -345,7 +336,7 @@ async function main() {
           "A compound exercise that targets the shoulders using a machine. Provides stability and controlled movement.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/machine-shoulder-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=MjVDrYPD7Rs",
       },
     }),
     prisma.exercise.create({
@@ -355,7 +346,7 @@ async function main() {
           "A unilateral exercise that targets the shoulders. Helps address muscle imbalances.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/single-arm-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=FUwme_oBDsA",
       },
     }),
     prisma.exercise.create({
@@ -365,7 +356,7 @@ async function main() {
           "An isolation exercise that targets the front deltoids. Raise a weight plate in front of the body.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/front-plate-raise.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=FbkDVvHKrgE",
       },
     }),
     prisma.exercise.create({
@@ -375,7 +366,7 @@ async function main() {
           "A bodyweight exercise that targets the shoulders and triceps. Performed in a handstand position.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/handstand-push-ups.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=pYx7CRs7kAM",
       },
     }),
     prisma.exercise.create({
@@ -385,19 +376,19 @@ async function main() {
           "A compound exercise that targets the shoulders, legs, and core. Clean a barbell from the ground and press it overhead.",
         bodyPart: "Shoulders",
         imageUrl: "/exercises/clean-and-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=K1QPQBVbTKM",
       },
     }),
 
     // Leg Exercises
     prisma.exercise.create({
       data: {
-        name: "Squats",
+        name: "Barbell Squats",
         description:
           "A compound exercise that targets the quadriceps, hamstrings, and glutes. Lower the body by bending the knees and hips.",
         bodyPart: "Legs",
         imageUrl: "/exercises/squats.jpg",
-        videoUrl: "https://www.youtube.com/embed/aclHkVaku9U",
+        videoUrl: "https://www.youtube.com/watch?v=MVMNk0HiTMg",
       },
     }),
     prisma.exercise.create({
@@ -407,7 +398,7 @@ async function main() {
           "A compound exercise that targets the posterior chain. Lift a barbell from the ground to a standing position.",
         bodyPart: "Legs",
         imageUrl: "/exercises/deadlifts.jpg",
-        videoUrl: "https://www.youtube.com/embed/ytGaGIn3SjE",
+        videoUrl: "https://www.youtube.com/watch?v=AweC3UaM14o",
       },
     }),
     prisma.exercise.create({
@@ -417,7 +408,7 @@ async function main() {
           "A compound exercise that targets the quadriceps, hamstrings, and glutes. Step forward and lower the body until both knees are bent.",
         bodyPart: "Legs",
         imageUrl: "/exercises/lunges.jpg",
-        videoUrl: "https://www.youtube.com/embed/QOVaHwm-Q6U",
+        videoUrl: "https://www.youtube.com/watch?v=9gglI77Kzq8",
       },
     }),
     prisma.exercise.create({
@@ -427,7 +418,7 @@ async function main() {
           "A compound exercise that targets the quadriceps, hamstrings, and glutes. Press a weighted platform away from the body using the legs.",
         bodyPart: "Legs",
         imageUrl: "/exercises/leg-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/IZxyjW7MPJQ",
+        videoUrl: "https://www.youtube.com/watch?v=yZmx_Ac3880",
       },
     }),
     prisma.exercise.create({

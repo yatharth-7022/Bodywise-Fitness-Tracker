@@ -11,7 +11,14 @@ import path from "path";
 
 const app = express();
 
-app.use(cors());
+// Configure CORS to allow requests from your frontend
+app.use(
+  cors({
+    origin: ["http://localhost:5173", "http://192.168.1.*:5173"], // Add your frontend URL
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 // Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "../public")));
@@ -38,8 +45,8 @@ app.use(
   }
 );
 
-const PORT = process.env.PORT || 5000;
+const PORT = parseInt(process.env.PORT || "5000", 10);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   logger.info(`Server is running on port ${PORT}`);
 });
