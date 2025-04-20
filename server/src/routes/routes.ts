@@ -27,7 +27,6 @@ import {
 
 const router = Router();
 
-// Public routes (no authentication required)
 router.post("/signup", validateSignup, handleValidationErrors, signup);
 router.post("/login", validateLogin, handleValidationErrors, login);
 
