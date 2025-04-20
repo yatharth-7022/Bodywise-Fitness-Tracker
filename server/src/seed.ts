@@ -428,7 +428,7 @@ async function main() {
           "A compound exercise that targets the hamstrings and glutes. Hinge at the hips while keeping the back straight.",
         bodyPart: "Legs",
         imageUrl: "/exercises/romanian-deadlifts.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=8tTKm-3wX5s",
       },
     }),
     prisma.exercise.create({
@@ -438,7 +438,7 @@ async function main() {
           "An isolation exercise that targets the quadriceps using a machine. Provides controlled movement and stability.",
         bodyPart: "Legs",
         imageUrl: "/exercises/leg-extensions.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=m0FOpMEgero",
       },
     }),
     prisma.exercise.create({
@@ -448,7 +448,7 @@ async function main() {
           "An isolation exercise that targets the hamstrings using a machine. Provides controlled movement and stability.",
         bodyPart: "Legs",
         imageUrl: "/exercises/leg-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=Orxowest56U",
       },
     }),
     prisma.exercise.create({
@@ -458,7 +458,7 @@ async function main() {
           "A compound exercise that targets the quadriceps, hamstrings, and glutes. Performed on a hack squat machine.",
         bodyPart: "Legs",
         imageUrl: "/exercises/hack-squats.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=rYgNArpwE7E",
       },
     }),
     prisma.exercise.create({
@@ -468,7 +468,7 @@ async function main() {
           "A variation of the deadlift that targets the inner thighs and glutes. Performed with a wide stance.",
         bodyPart: "Legs",
         imageUrl: "/exercises/sumo-deadlifts.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=pfSMst14EFk",
       },
     }),
     prisma.exercise.create({
@@ -478,7 +478,7 @@ async function main() {
           "A variation of lunges that targets the quadriceps, hamstrings, and glutes. Performed while walking forward.",
         bodyPart: "Legs",
         imageUrl: "/exercises/walking-lunges.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=DlhojghkaQ0",
       },
     }),
     prisma.exercise.create({
@@ -488,7 +488,7 @@ async function main() {
           "An isolation exercise that targets the glutes. Lift the hips off the ground while lying on the back.",
         bodyPart: "Legs",
         imageUrl: "/exercises/glute-bridges.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=OUgsJ8-Vi0E",
       },
     }),
     prisma.exercise.create({
@@ -498,17 +498,17 @@ async function main() {
           "An isolation exercise that targets the glutes. Lift the hips off the ground while resting the upper back on a bench.",
         bodyPart: "Legs",
         imageUrl: "/exercises/hip-thrusts.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=pUdIL5x0fWg",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Step-ups",
+        name: "Dumbbell Step-up",
         description:
           "A compound exercise that targets the quadriceps, hamstrings, and glutes. Step up onto a platform and back down.",
         bodyPart: "Legs",
         imageUrl: "/exercises/step-ups.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=DxUNi119Qzs",
       },
     }),
     prisma.exercise.create({
@@ -518,7 +518,7 @@ async function main() {
           "A variation of squats that targets the quadriceps, hamstrings, and glutes. Hold a dumbbell or kettlebell at chest level.",
         bodyPart: "Legs",
         imageUrl: "/exercises/goblet-squats.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=3gpXflqRiEc",
       },
     }),
     prisma.exercise.create({
@@ -528,7 +528,7 @@ async function main() {
           "A plyometric exercise that targets the legs and core. Jump onto a box or platform.",
         bodyPart: "Legs",
         imageUrl: "/exercises/box-jumps.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=HHX_8rNIrYE",
       },
     }),
     prisma.exercise.create({
@@ -538,7 +538,7 @@ async function main() {
           "A variation of squats that targets the quadriceps. Lean back while keeping the torso upright.",
         bodyPart: "Legs",
         imageUrl: "/exercises/sissy-squats.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=FTmbNjUu7CI",
       },
     }),
     prisma.exercise.create({
@@ -548,17 +548,17 @@ async function main() {
           "A unilateral exercise that targets the quadriceps, hamstrings, and glutes. Performed with one foot elevated on a bench.",
         bodyPart: "Legs",
         imageUrl: "/exercises/bulgarian-split-squats.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=Fmjj7wFJWRE",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Single Leg Deadlifts",
+        name: "Single Leg Single Kettlebell Deadlift",
         description:
           "A unilateral exercise that targets the hamstrings and glutes. Hinge at the hips while keeping one leg off the ground.",
         bodyPart: "Legs",
         imageUrl: "/exercises/single-leg-deadlifts.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=VnHvZtV8Gz0",
       },
     }),
     prisma.exercise.create({
@@ -568,7 +568,7 @@ async function main() {
           "An isolation exercise that targets the calf muscles. Raise the heels off the ground while standing.",
         bodyPart: "Legs",
         imageUrl: "/exercises/calf-raises.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=c5Kv6-fnTj8",
       },
     }),
     prisma.exercise.create({
@@ -578,7 +578,7 @@ async function main() {
           "An isolation exercise that targets the glutes. Kick one leg back while keeping the knee bent.",
         bodyPart: "Legs",
         imageUrl: "/exercises/donkey-kicks.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=EtSJ8rwm5M8",
       },
     }),
 
@@ -590,17 +590,17 @@ async function main() {
           "An isolation exercise that targets the biceps. Curl a dumbbell or barbell towards the shoulders.",
         bodyPart: "Arms",
         imageUrl: "/exercises/bicep-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/ykJmrZ5v0Oo",
+        videoUrl: "https://www.youtube.com/watch?v=HnHuhf4hEWY",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Tricep Extensions",
+        name: "Cable Overhead Triceps Extension",
         description:
           "An isolation exercise that targets the triceps. Extend the arms overhead or behind the body with a dumbbell or cable.",
         bodyPart: "Arms",
         imageUrl: "/exercises/tricep-extensions.jpg",
-        videoUrl: "https://www.youtube.com/embed/6SS6K3lAwZ8",
+        videoUrl: "https://www.youtube.com/watch?v=1u18yJELsh0",
       },
     }),
     prisma.exercise.create({
@@ -610,17 +610,17 @@ async function main() {
           "An isolation exercise that targets the biceps and brachialis. Curl dumbbells with a neutral grip.",
         bodyPart: "Arms",
         imageUrl: "/exercises/hammer-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/zC3nLlEvin4",
+        videoUrl: "https://www.youtube.com/watch?v=BRVDS6HVR9Q",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Skull Crushers",
+        name: "Barbell Skull Crushers",
         description:
           "An isolation exercise that targets the triceps. Lower a barbell or dumbbells towards the forehead while lying on a bench.",
         bodyPart: "Arms",
         imageUrl: "/exercises/skull-crushers.jpg",
-        videoUrl: "https://www.youtube.com/embed/d_KZxkY_0cM",
+        videoUrl: "https://www.youtube.com/watch?v=l3rHYPtMUo8",
       },
     }),
     prisma.exercise.create({
@@ -630,7 +630,7 @@ async function main() {
           "An isolation exercise that targets the biceps. Curl a barbell or dumbbells while resting the arms on a preacher bench.",
         bodyPart: "Arms",
         imageUrl: "/exercises/preacher-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=sxA__DoLsgo",
       },
     }),
     prisma.exercise.create({
@@ -640,7 +640,7 @@ async function main() {
           "An isolation exercise that targets the biceps using cable machines. Provides constant tension throughout the movement.",
         bodyPart: "Arms",
         imageUrl: "/exercises/cable-bicep-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=UsaY33N4KEw",
       },
     }),
     prisma.exercise.create({
@@ -650,7 +650,7 @@ async function main() {
           "An isolation exercise that targets the triceps using cable machines. Push the cable attachment down while keeping elbows stationary.",
         bodyPart: "Arms",
         imageUrl: "/exercises/cable-tricep-pushdowns.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=6Fzep104f0s",
       },
     }),
     prisma.exercise.create({
@@ -660,17 +660,17 @@ async function main() {
           "An isolation exercise that targets the biceps. Curl a dumbbell while resting the elbow on the inner thigh.",
         bodyPart: "Arms",
         imageUrl: "/exercises/concentration-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=VMbDQ8PZazY",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Overhead Tricep Extensions",
+        name: "Cable Overhead Tricep Extensions",
         description:
           "An isolation exercise that targets the triceps. Extend the arms overhead with a dumbbell or cable.",
         bodyPart: "Arms",
         imageUrl: "/exercises/overhead-tricep-extensions.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=1u18yJELsh0",
       },
     }),
     prisma.exercise.create({
@@ -680,17 +680,17 @@ async function main() {
           "An isolation exercise that targets the biceps and forearms. Rotate the dumbbells during the curl movement.",
         bodyPart: "Arms",
         imageUrl: "/exercises/zottman-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=wrjEdVZrkhk",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Dips",
+        name: "Tricep Dips",
         description:
           "A compound exercise that targets the triceps and chest. Lower and raise the body using parallel bars.",
         bodyPart: "Arms",
         imageUrl: "/exercises/dips.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/shorts/9llvBAV4RHI",
       },
     }),
     prisma.exercise.create({
@@ -700,7 +700,7 @@ async function main() {
           "A compound exercise that targets the triceps and chest. Press a barbell with hands closer than shoulder width.",
         bodyPart: "Arms",
         imageUrl: "/exercises/close-grip-bench-press.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=XEFDMwmrLAM",
       },
     }),
     prisma.exercise.create({
@@ -710,7 +710,7 @@ async function main() {
           "An isolation exercise that targets the brachialis and forearms. Curl a barbell or dumbbells with an overhand grip.",
         bodyPart: "Arms",
         imageUrl: "/exercises/reverse-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=hUA-fIpM7nA",
       },
     }),
     prisma.exercise.create({
@@ -720,7 +720,7 @@ async function main() {
           "An isolation exercise that targets the triceps. Extend the arm backward while keeping the upper arm parallel to the floor.",
         bodyPart: "Arms",
         imageUrl: "/exercises/tricep-kickbacks.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=m_UlDFNX4mk",
       },
     }),
     prisma.exercise.create({
@@ -730,7 +730,7 @@ async function main() {
           "An isolation exercise that targets the forearms. Curl a barbell or dumbbells using only wrist movement.",
         bodyPart: "Arms",
         imageUrl: "/exercises/wrist-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=3VLTzIrnb5g",
       },
     }),
     prisma.exercise.create({
@@ -740,7 +740,7 @@ async function main() {
           "An isolation exercise that targets the forearms. Curl a barbell or dumbbells with an overhand grip using only wrist movement.",
         bodyPart: "Arms",
         imageUrl: "/exercises/reverse-wrist-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=FW7URAaC-vE",
       },
     }),
     prisma.exercise.create({
@@ -750,7 +750,7 @@ async function main() {
           "An isolation exercise that targets the biceps and brachialis using cable machines. Provides constant tension throughout the movement.",
         bodyPart: "Arms",
         imageUrl: "/exercises/cable-hammer-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=V8AR3SGzboU",
       },
     }),
     prisma.exercise.create({
@@ -760,7 +760,7 @@ async function main() {
           "An isolation exercise that targets the triceps. Extend one arm overhead with a dumbbell or cable.",
         bodyPart: "Arms",
         imageUrl: "/exercises/single-arm-tricep-extensions.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=vjOefY0qd1Y",
       },
     }),
     prisma.exercise.create({
@@ -770,7 +770,7 @@ async function main() {
           "An isolation exercise that targets the biceps. Curl an EZ bar towards the shoulders.",
         bodyPart: "Arms",
         imageUrl: "/exercises/ez-bar-curls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=EK747VC37yE",
       },
     }),
 
@@ -802,7 +802,7 @@ async function main() {
           "A compound exercise that targets the latissimus dorsi. Pull a bar down towards the chest while seated.",
         bodyPart: "Back",
         imageUrl: "/exercises/lat-pulldowns.jpg",
-        videoUrl: "https://www.youtube.com/embed/CAwf7n6Luuc",
+        videoUrl: "https://www.youtube.com/watch?v=JGeRYIZdojU",
       },
     }),
     prisma.exercise.create({
@@ -812,7 +812,7 @@ async function main() {
           "A compound exercise that targets the back and biceps. Row a T-bar towards the torso while standing.",
         bodyPart: "Back",
         imageUrl: "/exercises/t-bar-rows.jpg",
-        videoUrl: "https://www.youtube.com/embed/j3Igk5nyZE4",
+        videoUrl: "https://www.youtube.com/watch?v=hYo72r8Ivso",
       },
     }),
     prisma.exercise.create({
@@ -822,7 +822,7 @@ async function main() {
           "A compound exercise that targets the back and biceps. Row a cable attachment towards the torso while seated.",
         bodyPart: "Back",
         imageUrl: "/exercises/seated-cable-rows.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/shorts/qD1WZ5pSuvk",
       },
     }),
     prisma.exercise.create({
@@ -832,7 +832,7 @@ async function main() {
           "A unilateral exercise that targets the back and biceps. Row a dumbbell towards the torso while supporting the body with one hand.",
         bodyPart: "Back",
         imageUrl: "/exercises/single-arm-dumbbell-rows.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=DMo3HJoawrU",
       },
     }),
     prisma.exercise.create({
@@ -842,7 +842,7 @@ async function main() {
           "A compound exercise that targets the back and biceps. Pull the body up to a bar using an underhand grip.",
         bodyPart: "Back",
         imageUrl: "/exercises/chin-ups.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=T78xCiw_R6g",
       },
     }),
     prisma.exercise.create({
@@ -852,7 +852,7 @@ async function main() {
           "A compound exercise that targets the back and biceps. Row a barbell anchored in a landmine attachment.",
         bodyPart: "Back",
         imageUrl: "/exercises/meadows-rows.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=G-jU1aPVhnY",
       },
     }),
     prisma.exercise.create({
@@ -862,7 +862,7 @@ async function main() {
           "An isolation exercise that targets the latissimus dorsi. Pull a cable attachment down and back while keeping arms straight.",
         bodyPart: "Back",
         imageUrl: "/exercises/cable-pullovers.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=gxOwRCbkcqw",
       },
     }),
     prisma.exercise.create({
@@ -872,7 +872,7 @@ async function main() {
           "An isolation exercise that targets the rear deltoids and upper back. Move dumbbells or cables in an arc motion while keeping arms straight.",
         bodyPart: "Back",
         imageUrl: "/exercises/reverse-fly.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=IloCYmYWayM",
       },
     }),
     prisma.exercise.create({
@@ -882,19 +882,10 @@ async function main() {
           "An isolation exercise that targets the trapezius muscles. Raise the shoulders towards the ears while holding a barbell.",
         bodyPart: "Back",
         imageUrl: "/exercises/barbell-shrugs.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=M_MjF5Nm_h4",
       },
     }),
-    prisma.exercise.create({
-      data: {
-        name: "Dumbbell Shrugs",
-        description:
-          "An isolation exercise that targets the trapezius muscles. Raise the shoulders towards the ears while holding dumbbells.",
-        bodyPart: "Back",
-        imageUrl: "/exercises/dumbbell-shrugs.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
-      },
-    }),
+
     prisma.exercise.create({
       data: {
         name: "Wide Grip Pull-ups",
@@ -902,7 +893,7 @@ async function main() {
           "A compound exercise that targets the back and biceps. Pull the body up to a bar using a wide grip.",
         bodyPart: "Back",
         imageUrl: "/exercises/wide-grip-pull-ups.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=GRgWPT9XSQQ",
       },
     }),
     prisma.exercise.create({
@@ -912,17 +903,17 @@ async function main() {
           "A compound exercise that targets the back and biceps. Pull the body up to a bar using a close grip.",
         bodyPart: "Back",
         imageUrl: "/exercises/close-grip-pull-ups.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=aAggnpPyR6E",
       },
     }),
     prisma.exercise.create({
       data: {
-        name: "Machine Rows",
+        name: "Machine Chest Supported Row",
         description:
           "A compound exercise that targets the back and biceps using a machine. Provides stability and controlled movement.",
         bodyPart: "Back",
         imageUrl: "/exercises/machine-rows.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=_FrrYQxA6kc",
       },
     }),
     prisma.exercise.create({
@@ -932,7 +923,7 @@ async function main() {
           "A compound exercise that targets the back and biceps. Row the body up to a bar while lying underneath it.",
         bodyPart: "Back",
         imageUrl: "/exercises/inverted-rows.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=KOaCM1HMwU0",
       },
     }),
     prisma.exercise.create({
@@ -942,7 +933,7 @@ async function main() {
           "An isolation exercise that targets the latissimus dorsi. Pull a cable attachment down while keeping arms straight.",
         bodyPart: "Back",
         imageUrl: "/exercises/straight-arm-pulldowns.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=G9uNaXGTJ4w",
       },
     }),
     prisma.exercise.create({
@@ -952,7 +943,7 @@ async function main() {
           "A compound exercise that targets the lower back and hamstrings. Hinge at the hips while keeping the back straight.",
         bodyPart: "Back",
         imageUrl: "/exercises/good-mornings.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=dEJ0FTm-CEk",
       },
     }),
     prisma.exercise.create({
@@ -962,7 +953,7 @@ async function main() {
           "An isolation exercise that targets the lower back. Extend the torso up while lying face down on a hyperextension bench.",
         bodyPart: "Back",
         imageUrl: "/exercises/hyperextensions.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=5_ejbGfdAQE",
       },
     }),
     prisma.exercise.create({
@@ -972,7 +963,7 @@ async function main() {
           "An exercise that targets the rear deltoids and upper back. Pull a cable attachment towards the face while keeping elbows high.",
         bodyPart: "Back",
         imageUrl: "/exercises/cable-face-pulls.jpg",
-        videoUrl: "https://www.youtube.com/embed/5v3rYbbZf2o",
+        videoUrl: "https://www.youtube.com/watch?v=-MODnZdnmAQ",
       },
     }),
   ]);
@@ -984,12 +975,12 @@ async function main() {
         name: "Chest Day",
         description: "A comprehensive chest workout routine",
         imageUrl: "/Routines/chest-workout.jpg",
-        duration: 45 * 60, // 45 minutes in seconds
+        duration: 45 * 60,
         isDefault: true,
         exercises: {
           create: [
             {
-              exerciseId: createdExercises[0].id, // Barbell Bench Press
+              exerciseId: createdExercises[2].id,
               sets: 4,
               exerciseSets: {
                 create: Array.from({ length: 4 }).map(() => ({
@@ -1000,7 +991,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[2].id, // Incline Dumbbell Press
+              exerciseId: createdExercises[3].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1011,7 +1002,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[1].id, // Dumbbell Fly
+              exerciseId: createdExercises[4].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1022,7 +1013,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[4].id, // Push-ups
+              exerciseId: createdExercises[7].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1041,12 +1032,12 @@ async function main() {
         name: "Shoulder Day",
         description: "A complete shoulder workout routine",
         imageUrl: "/Routines/shoulder-workout.jpg",
-        duration: 40 * 60, // 40 minutes in seconds
+        duration: 40 * 60,
         isDefault: true,
         exercises: {
           create: [
             {
-              exerciseId: createdExercises[20].id, // Overhead Press
+              exerciseId: createdExercises[20].id,
               sets: 4,
               exerciseSets: {
                 create: Array.from({ length: 4 }).map(() => ({
@@ -1057,7 +1048,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[21].id, // Lateral Raises
+              exerciseId: createdExercises[21].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1068,7 +1059,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[22].id, // Front Raises
+              exerciseId: createdExercises[22].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1079,7 +1070,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[23].id, // Face Pulls
+              exerciseId: createdExercises[23].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1103,7 +1094,7 @@ async function main() {
         exercises: {
           create: [
             {
-              exerciseId: createdExercises[24].id, // Squats
+              exerciseId: createdExercises[37].id,
               sets: 4,
               exerciseSets: {
                 create: Array.from({ length: 4 }).map(() => ({
@@ -1114,7 +1105,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[25].id, // Deadlifts
+              exerciseId: createdExercises[42].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1125,7 +1116,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[26].id, // Lunges
+              exerciseId: createdExercises[43].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1136,7 +1127,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[27].id, // Leg Press
+              exerciseId: createdExercises[41].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1155,12 +1146,12 @@ async function main() {
         name: "Arm Day",
         description: "An intense arm workout routine",
         imageUrl: "/Routines/arm-workout.jpg",
-        duration: 35 * 60, // 35 minutes in seconds
+        duration: 35 * 60,
         isDefault: true,
         exercises: {
           create: [
             {
-              exerciseId: createdExercises[28].id, // Bicep Curls
+              exerciseId: createdExercises[57].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1171,7 +1162,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[29].id, // Tricep Extensions
+              exerciseId: createdExercises[58].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1182,7 +1173,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[30].id, // Hammer Curls
+              exerciseId: createdExercises[59].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1193,7 +1184,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[31].id, // Skull Crushers
+              exerciseId: createdExercises[63].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1217,7 +1208,7 @@ async function main() {
         exercises: {
           create: [
             {
-              exerciseId: createdExercises[32].id, // Pull-ups
+              exerciseId: createdExercises[91].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1228,7 +1219,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[33].id, // Bent Over Rows
+              exerciseId: createdExercises[75].id,
               sets: 4,
               exerciseSets: {
                 create: Array.from({ length: 4 }).map(() => ({
@@ -1239,7 +1230,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[34].id, // Lat Pulldowns
+              exerciseId: createdExercises[77].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({
@@ -1250,7 +1241,7 @@ async function main() {
               },
             },
             {
-              exerciseId: createdExercises[35].id, // T-Bar Rows
+              exerciseId: createdExercises[76].id,
               sets: 3,
               exerciseSets: {
                 create: Array.from({ length: 3 }).map(() => ({

@@ -12,14 +12,38 @@ import { useNavigate } from "react-router-dom";
 import { firstLetterUppercase } from "@/utils/handlerFunctions";
 
 const Routine = () => {
-  const { routineById } = useDashboard();
+  const { routineById, isRoutineLoading } = useDashboard();
   const navigate = useNavigate();
+
+  if (isRoutineLoading) {
+    return (
+      <div className="h-full w-full max-w-md mx-auto overflow-hidden flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+  if (!routineById) {
+    return (
+      <div className="h-full w-full max-w-md mx-auto overflow-hidden flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold mb-2">Routine not found</h2>
+          <button
+            onClick={() => navigate(DASHBOARD)}
+            className="text-blue-500 hover:underline"
+          >
+            Return to Dashboard
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className=" h-full w-full max-w-md mx-auto overflow-hidden">
+    <div className="h-full w-full max-w-md mx-auto overflow-hidden">
       <div className="relative h-full">
         <div className="h-64  relative">
           <img
-            src={`${import.meta.env.VITE_API_URL}/${routineById?.imageUrl}`}
+            src={`${import.meta.env.VITE_API_URL}/${routineById.imageUrl}`}
             alt="Man doing bench press"
             className="w-full h-full object-cover opacity-90"
           />
@@ -35,7 +59,7 @@ const Routine = () => {
         </div>
 
         <div className="absolute bottom-0 left-0 right-0 bg-[#1A1A1D] rounded-t-3xl p-4 pb-5">
-          <h1 className="text-2xl font-bold mb-2">{routineById?.name}</h1>
+          <h1 className="text-2xl font-bold mb-2">{routineById.name}</h1>
 
           <div className="flex items-center text-gray-500 text-sm mb-4">
             {/* <span>Last Exercised on 12/15/2023</span> */}
@@ -56,7 +80,7 @@ const Routine = () => {
           </div>
 
           <div className="space-y-4">
-            {routineById?.exercises.map((exercise) => (
+            {routineById.exercises.map((exercise) => (
               <div
                 key={exercise?.id}
                 className="flex items-center border-b border-gray-100 pb-4"

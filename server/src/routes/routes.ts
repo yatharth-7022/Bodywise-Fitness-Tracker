@@ -27,14 +27,16 @@ import {
 
 const router = Router();
 
+// Public routes (no authentication required)
+router.post("/signup", validateSignup, handleValidationErrors, signup);
+router.post("/login", validateLogin, handleValidationErrors, login);
+
+// Apply rate limiter and protection to all other routes
 router.use(authRateLimiter);
 router.use(protect);
 
-router.post("/signup", validateSignup, handleValidationErrors, signup);
-router.post("/login", validateLogin, handleValidationErrors, login);
-router.use(protect);
+// Protected routes
 router.get("/user", getUser);
-
 router.post("/", validateWeightLog, handleValidationErrors, logWeight);
 router.get("/", getWeightLogs);
 router.get("/recent-weights", getRecentWeights);

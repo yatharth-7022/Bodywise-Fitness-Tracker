@@ -23,3 +23,21 @@ dist-ssr
 *.sln
 *.sw?
 .env
+.env.local
+.env.*
+!.env.example
+
+# Logs
+*.log
+combined.log
+error.log
+
+# Both client and server env files
+/client/.env
+/client/.env.local
+/client/.env.*
+!/client/.env.example
+
+/server/.env
+/server/.env.*
+!/server/.env.example
