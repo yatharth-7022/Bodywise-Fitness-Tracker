@@ -5,6 +5,10 @@ import { Request, Response } from "express";
 import { AuthRequest } from "../middleware/authMiddleware";
 import logger from "../utils/logger";
 import { v4 as uuidv4 } from "uuid";
+import { processAndSaveImage } from "../utils/fileUpload";
+import fs from "fs/promises";
+import path from "path";
+import { uploadToCloudinary, deleteFromCloudinary } from "../utils/cloudinary";
 
 const prisma = new PrismaClient();
 
@@ -185,5 +189,90 @@ export const logout = async (
   } catch (error) {
     logger.error("Logout error:", error);
     res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+export const uploadProfilePicture = async (
+  req: AuthRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    if (!req.file) {
+      res.status(400).json({ message: "No file uploaded" });
+      return;
+    }
+
+    const userId = req.userId;
+    if (!userId) {
+      res.status(401).json({ message: "Unauthorized" });
+      return;
+    }
+
+    // Get the current user to check if they have an existing profile picture
+    const currentUser = await prisma.user.findUnique({
+      where: { id: userId },
+      select: { profilePicture: true },
+    });
+
+    // If there's an existing profile picture, delete it from Cloudinary
+    if (currentUser?.profilePicture) {
+      await deleteFromCloudinary(currentUser.profilePicture);
+    }
+
+    // Upload new image to Cloudinary
+    const profilePictureUrl = await uploadToCloudinary(req.file);
+
+    // Update user with new profile picture URL
+    const updatedUser = await prisma.user.update({
+      where: { id: userId },
+      data: { profilePicture: profilePictureUrl },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        profilePicture: true,
+      },
+    });
+
+    res.status(200).json({
+      message: "Profile picture uploaded successfully",
+      user: updatedUser,
+    });
+  } catch (error) {
+    logger.error("Profile picture upload error:", error);
+    res.status(500).json({ message: "Error uploading profile picture" });
+  }
+};
+
+export const getProfilePicture = async (
+  req: AuthRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const userId = req.userId;
+    if (!userId) {
+      res.status(401).json({ message: "Unauthorized" });
+      return;
+    }
+
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        name: true,
+        email: true,
+        profilePicture: true,
+      },
+    });
+
+    if (!user) {
+      res.status(404).json({ message: "User not found" });
+      return;
+    }
+
+    res.status(200).json({ user });
+  } catch (error) {
+    logger.error("Get profile picture error:", error);
+    res.status(500).json({ message: "Error retrieving profile picture" });
   }
 };

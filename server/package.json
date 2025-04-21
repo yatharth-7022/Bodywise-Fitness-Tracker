@@ -2,7 +2,9 @@
   "dependencies": {
     "@prisma/client": "^5.10.2",
     "@types/morgan": "^1.9.9",
+    "@types/multer": "^1.4.12",
     "bcrypt": "^5.1.1",
+    "cloudinary": "^2.6.0",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -10,8 +12,10 @@
     "express-validator": "^7.2.1",
     "jsonwebtoken": "^9.0.2",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.2",
     "prisma": "^5.10.2",
     "rate-limiter-flexible": "^7.0.0",
+    "sharp": "^0.34.1",
     "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },

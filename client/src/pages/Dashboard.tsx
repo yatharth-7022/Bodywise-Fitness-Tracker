@@ -21,23 +21,22 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useDashboard } from "@/hooks/useDashboard";
 import { DefaultRoutine } from "@/types/dashboard";
+import { ProfilePicture } from "@/components/ProfilePicture";
 
 export const Dashboard = () => {
   const { defaultRoutines } = useDashboard();
-  const { userData } = useAuth();
+  const { userData, profileData } = useAuth();
   const navigate = useNavigate();
   const defaultRoutinesWithImage = defaultRoutines?.filter(
     (routine: DefaultRoutine) => routine.imageUrl !== null
   );
+  console.log(profileData);
   return (
     <div className="min-h-screen bg-zinc-950 text-white relative">
       <div className="max-w-[100vw] overflow-hidden">
         <header className="flex justify-between items-center p-6">
           <div className="flex items-center gap-3">
-            <Avatar>
-              <AvatarImage src="https://github.com/shadcn.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <ProfilePicture src={profileData?.user?.profilePicture} size="md" />
             <div>
               <p className="text-zinc-400 text-sm">Good morning!</p>
               <h1 className="text-xl font-semibold">{userData?.user?.name}</h1>

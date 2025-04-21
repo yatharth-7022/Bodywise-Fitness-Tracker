@@ -8,6 +8,8 @@ const API_CONFIG = {
       user: "/api/auth/user",
       refresh: "/api/auth/refresh",
       logout: "/api/auth/logout",
+      uploadProfilePic: "/api/auth/upload-profile-picture",
+      getProfile: "/api/auth/profile",
     },
     weight: {
       log: "/api/weight",
@@ -30,6 +32,12 @@ export const LOGIN = buildUrl(API_CONFIG.endpoints.auth.login);
 export const SIGNUP = buildUrl(API_CONFIG.endpoints.auth.signup);
 export const LOGOUT = buildUrl(API_CONFIG.endpoints.auth.logout);
 export const USER_INFO = buildUrl(API_CONFIG.endpoints.auth.user);
+export const GET_PROFILE_PICTURE = buildUrl(
+  API_CONFIG.endpoints.auth.getProfile
+);
+export const UPLOAD_PROFILE_PICTURE = buildUrl(
+  API_CONFIG.endpoints.auth.uploadProfilePic
+);
 export const WEIGHT_LOG = buildUrl(API_CONFIG.endpoints.weight.log);
 export const RECENT_WEIGHTS = buildUrl(API_CONFIG.endpoints.weight.recent);
 export const ALL_WEIGHTS = buildUrl(API_CONFIG.endpoints.weight.all);

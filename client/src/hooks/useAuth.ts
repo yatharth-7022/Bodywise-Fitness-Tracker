@@ -2,10 +2,11 @@ import { LOGIN, LOGOUT, SIGNUP, USER_INFO } from "@/api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { DASHBOARD, SETTINGS } from "@/routes/routes";
+import { DASHBOARD, SETTINGS, UPLOAD_PROFILE_PICTURE } from "@/routes/routes";
 import { LoginData, SignupData } from "@/types/auth";
 import api from "../../intercerptor";
 import { LOGIN as LOGIN_ROUTE } from "@/routes/routes";
+import { API_CONFIG } from "@/api";
 
 export const useAuth = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ export const useAuth = () => {
     onSuccess: (data) => {
       localStorage.setItem("token", data.token);
       toast.success("Account created successfully!");
-      navigate(DASHBOARD);
+      navigate(UPLOAD_PROFILE_PICTURE);
     },
     onError: (error: Error) => {
       toast.error(error.message);
@@ -76,6 +77,15 @@ export const useAuth = () => {
     logoutMutation.mutate();
   };
 
+  const { data: profileData, refetch: refetchProfile } = useQuery({
+    queryKey: ["profile"],
+    queryFn: async () => {
+      const response = await api.get(API_CONFIG.endpoints.auth.getProfile);
+      return response.data;
+    },
+    enabled: !!localStorage.getItem("token"),
+  });
+
   return {
     signUpMutation,
     isLoading: signUpMutation.isPending,
@@ -85,5 +95,7 @@ export const useAuth = () => {
     logoutMutation,
     isLogoutLoading: logoutMutation.isPending,
     handleLogout,
+    profileData,
+    refetchProfile,
   };
 };
