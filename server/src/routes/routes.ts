@@ -1,5 +1,11 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { signup, login, getUser } from "../controllers/authController";
+import {
+  signup,
+  login,
+  getUser,
+  refresh,
+  logout,
+} from "../controllers/authController";
 import { protect } from "../middleware/authMiddleware";
 
 import { authRateLimiter } from "../middleware/rateLimiter";
@@ -27,14 +33,14 @@ import {
 
 const router = Router();
 
+router.post("/signup", validateSignup, handleValidationErrors, signup);
+router.post("/login", validateLogin, handleValidationErrors, login);
+
 router.use(authRateLimiter);
 router.use(protect);
 
-router.post("/signup", validateSignup, handleValidationErrors, signup);
-router.post("/login", validateLogin, handleValidationErrors, login);
-router.use(protect);
+// Protected routes
 router.get("/user", getUser);
-
 router.post("/", validateWeightLog, handleValidationErrors, logWeight);
 router.get("/", getWeightLogs);
 router.get("/recent-weights", getRecentWeights);
@@ -44,5 +50,7 @@ router.get("/exercises/:bodyPart", getExercisesByBodyPart);
 router.get("/routines", getAllRoutines);
 router.get("/routines/default", getDefaultRoutines);
 router.get("/routines/:id", getRoutineById);
+router.post("/refresh", refresh);
+router.post("/logout", logout);
 
 export default router;

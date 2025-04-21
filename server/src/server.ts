@@ -8,18 +8,44 @@ import weightRoutes from "./routes/routes";
 import exerciseRoutes from "./routes/routes";
 import routineRoutes from "./routes/routes";
 import path from "path";
+import cookieParser from "cookie-parser";
+
+dotenv.config();
 
 const app = express();
 
-app.use(cors());
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [
+  "http://localhost:5173",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.indexOf(origin) === -1) {
+        const msg =
+          "The CORS policy for this site does not allow access from the specified Origin.";
+        return callback(new Error(msg), false);
+      }
+      return callback(null, true);
+    },
+    credentials: true,
+  })
+);
+
 app.use(express.json());
-// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(cookieParser());
 app.use(
   morgan("combined", {
     stream: { write: (message) => logger.info(message.trim()) },
   })
 );
+
+app.get("/health", (req, res) => {
+  res.json({ status: "ok", message: "Server is running" });
+});
 
 app.use("/api/auth", authRoutes);
 app.use("/api/weight", weightRoutes);
@@ -38,8 +64,8 @@ app.use(
   }
 );
 
-const PORT = process.env.PORT || 5000;
+const PORT = parseInt(process.env.PORT || "5000", 10);
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   logger.info(`Server is running on port ${PORT}`);
 });

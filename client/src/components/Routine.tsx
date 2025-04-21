@@ -12,10 +12,35 @@ import { useNavigate } from "react-router-dom";
 import { firstLetterUppercase } from "@/utils/handlerFunctions";
 
 const Routine = () => {
-  const { routineById } = useDashboard();
+  const { routineById, isRoutineLoading } = useDashboard();
   const navigate = useNavigate();
+
+  if (isRoutineLoading) {
+    return (
+      <div className="h-full w-full max-w-md mx-auto overflow-hidden flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
+
+  if (!isRoutineLoading && !routineById) {
+    return (
+      <div className="h-full w-full max-w-md mx-auto overflow-hidden flex items-center justify-center">
+        <div className="text-center">
+          <h2 className="text-xl font-semibold mb-2">Routine not found</h2>
+          <button
+            onClick={() => navigate(DASHBOARD)}
+            className="text-blue-500 hover:underline"
+          >
+            Return to Dashboard
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className=" h-full w-full max-w-md mx-auto overflow-hidden">
+    <div className="h-full w-full max-w-md mx-auto overflow-hidden">
       <div className="relative h-full">
         <div className="h-64  relative">
           <img

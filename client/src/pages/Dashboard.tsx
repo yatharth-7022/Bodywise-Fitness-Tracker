@@ -16,7 +16,7 @@ import { WorkoutCard } from "@/components/WorkoutCard";
 // import chestWorkout from "@/assets/image/chest-workout.jpg";
 import { WeeklyActivityChart } from "@/components/WeeklyActivityChart";
 import { MonthlyVolumeChart } from "@/components/MonthlyVolumeChart";
-import { LOG_WEIGHT } from "@/routes/routes";
+import { LOG_WEIGHT, SETTINGS } from "@/routes/routes";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useDashboard } from "@/hooks/useDashboard";
@@ -43,7 +43,13 @@ export const Dashboard = () => {
               <h1 className="text-xl font-semibold">{userData?.user?.name}</h1>
             </div>
           </div>
-          <Button variant="ghost" size="icon">
+          <Button
+            onClick={() => {
+              navigate(SETTINGS);
+            }}
+            variant="ghost"
+            size="icon"
+          >
             <Settings className="w-5 h-5" />
           </Button>
         </header>

@@ -19,7 +19,9 @@ export const useExercises = () => {
   };
 
   const location = useLocation();
-  const { data: allExercises } = useQuery<ExerciseCard[]>({
+  const { data: allExercises, isLoading: isLoadingAllExercises } = useQuery<
+    ExerciseCard[]
+  >({
     queryKey: ["allExercises"],
     queryFn: async () => {
       const response = await api.get(ALL_EXERCISES);
@@ -32,6 +34,7 @@ export const useExercises = () => {
 
   return {
     allExercises,
+    isLoadingAllExercises,
     selectedExercise,
     handleExerciseClick,
     showModal,

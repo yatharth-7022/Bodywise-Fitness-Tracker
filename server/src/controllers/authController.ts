@@ -4,10 +4,20 @@ import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
 import { AuthRequest } from "../middleware/authMiddleware";
 import logger from "../utils/logger";
+import { v4 as uuidv4 } from "uuid";
 
 const prisma = new PrismaClient();
 
 const JWT_SECRET = process.env.JWT_SECRET || "secret";
+const REFRESH_SECRET = process.env.REFRESH_SECRET || "refresh-secret";
+
+const generateTokens = (userId: number) => {
+  const accessToken = jwt.sign({ id: userId }, JWT_SECRET, { expiresIn: "1h" });
+  const refreshToken = jwt.sign({ id: userId }, REFRESH_SECRET, {
+    expiresIn: "7d",
+  });
+  return { accessToken, refreshToken };
+};
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
   const { name, email, password } = req.body;
@@ -49,10 +59,28 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       res.status(401).json({ message: "Invalid Credentials" });
       return;
     }
-    const token = jwt.sign({ id: user.id }, JWT_SECRET, { expiresIn: "7d" });
-    res.status(201).json({
+
+    const { accessToken, refreshToken } = generateTokens(user.id);
+
+    await prisma.refreshToken.create({
+      data: {
+        token: refreshToken,
+        userId: user.id,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
+      },
+    });
+
+    // Set refresh token in HTTP-only cookie
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
+
+    res.status(200).json({
       user: { id: user.id, username: user.name, email: user.email },
-      token,
+      token: accessToken,
     });
   } catch (error) {
     logger.error("Login error:", error);
@@ -76,6 +104,86 @@ export const getUser = async (
     res.status(200).json({ user });
   } catch (error) {
     logger.error("Get user error:", error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};
+
+export const refresh = async (req: Request, res: Response): Promise<void> => {
+  const refreshToken = req.cookies.refreshToken;
+
+  if (!refreshToken) {
+    res.status(401).json({ message: "Refresh token not found" });
+    return;
+  }
+
+  try {
+    // Verify refresh token
+    const decoded = jwt.verify(refreshToken, REFRESH_SECRET) as { id: number };
+
+    // Check if refresh token exists in database
+    const storedToken = await prisma.refreshToken.findFirst({
+      where: {
+        token: refreshToken,
+        userId: decoded.id,
+        expiresAt: {
+          gt: new Date(),
+        },
+      },
+    });
+
+    if (!storedToken) {
+      res.status(401).json({ message: "Invalid refresh token" });
+      return;
+    }
+
+    // Generate new tokens
+    const { accessToken, refreshToken: newRefreshToken } = generateTokens(
+      decoded.id
+    );
+
+    // Update refresh token in database
+    await prisma.refreshToken.update({
+      where: { id: storedToken.id },
+      data: {
+        token: newRefreshToken,
+        expiresAt: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+      },
+    });
+
+    // Set new refresh token in cookie
+    res.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+    });
+
+    res.json({ token: accessToken });
+  } catch (error) {
+    res.status(401).json({ message: "Invalid refresh token" });
+  }
+};
+export const logout = async (
+  req: AuthRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (refreshToken) {
+      await prisma.refreshToken.deleteMany({
+        where: {
+          token: refreshToken,
+        },
+      });
+    }
+    res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+    res.status(200).json({ message: "Logged Out Successfully" });
+  } catch (error) {
+    logger.error("Logout error:", error);
     res.status(500).json({ message: "Something went wrong" });
   }
 };

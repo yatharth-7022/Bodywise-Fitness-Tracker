@@ -1,10 +1,40 @@
-export const BASE_URL = "http://localhost:5000/api";
-export const LOGIN = `${BASE_URL}/auth/login`;
-export const SIGNUP = `${BASE_URL}/auth/signup`;
-export const USER_INFO = `${BASE_URL}/auth/user`;
-export const WEIGHT_LOG = `${BASE_URL}/weight`;
-export const RECENT_WEIGHTS = `${BASE_URL}/weight/recent-weights`;
-export const ALL_WEIGHTS = `${BASE_URL}/weight`;
-export const DEFAULT_ROUTINE = `${BASE_URL}/routines/routines/default`;
-export const ROUTINE_BY_ID = `${BASE_URL}/routines/routines/`;
-export const ALL_EXERCISES = `${BASE_URL}/exercises/exercises`;
+const API_CONFIG = {
+  baseUrl: import.meta.env.VITE_API_URL || "http://localhost:5000",
+  timeout: Number(import.meta.env.VITE_API_TIMEOUT) || 30000,
+  endpoints: {
+    auth: {
+      login: "/api/auth/login",
+      signup: "/api/auth/signup",
+      user: "/api/auth/user",
+      refresh: "/api/auth/refresh",
+      logout: "/api/auth/logout",
+    },
+    weight: {
+      log: "/api/weight",
+      recent: "/api/weight/recent-weights",
+      all: "/api/weight",
+    },
+    routines: {
+      default: "/api/routines/routines/default",
+      byId: "/api/routines/routines/",
+    },
+    exercises: {
+      all: "/api/exercises/exercises",
+    },
+  },
+} as const;
+
+const buildUrl = (endpoint: string) => `${API_CONFIG.baseUrl}${endpoint}`;
+
+export const LOGIN = buildUrl(API_CONFIG.endpoints.auth.login);
+export const SIGNUP = buildUrl(API_CONFIG.endpoints.auth.signup);
+export const LOGOUT = buildUrl(API_CONFIG.endpoints.auth.logout);
+export const USER_INFO = buildUrl(API_CONFIG.endpoints.auth.user);
+export const WEIGHT_LOG = buildUrl(API_CONFIG.endpoints.weight.log);
+export const RECENT_WEIGHTS = buildUrl(API_CONFIG.endpoints.weight.recent);
+export const ALL_WEIGHTS = buildUrl(API_CONFIG.endpoints.weight.all);
+export const DEFAULT_ROUTINE = buildUrl(API_CONFIG.endpoints.routines.default);
+export const ROUTINE_BY_ID = buildUrl(API_CONFIG.endpoints.routines.byId);
+export const ALL_EXERCISES = buildUrl(API_CONFIG.endpoints.exercises.all);
+
+export { API_CONFIG };

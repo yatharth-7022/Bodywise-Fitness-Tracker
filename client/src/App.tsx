@@ -12,6 +12,7 @@ import {
   WEIGHTS,
   ROUTINE,
   EXERCISES,
+  SETTINGS,
 } from "./routes/routes";
 import { PreSignUp } from "./pages/PreSignUp";
 import SignUp from "./pages/SignUp";
@@ -23,10 +24,12 @@ import { AppLayout } from "./pages/AppLayout";
 import Routine from "./components/Routine";
 import Dashboard from "@/pages/Dashboard";
 import { ALlExercises } from "./components/Exercise/AllExercises";
+import { Settings } from "./pages/Settings";
 
 function App() {
   const isAuthenticated = () => {
-    return true;
+    const token = localStorage.getItem("token");
+    return !!token;
   };
 
   const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
@@ -79,6 +82,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Routine />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={SETTINGS}
+            element={
+              <PrivateRoute>
+                <Settings />
               </PrivateRoute>
             }
           />

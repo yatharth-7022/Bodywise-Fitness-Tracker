@@ -1,10 +1,46 @@
 import { Button } from "@/components/ui/button";
 import { DASHBOARD, EXERCISES } from "@/routes/routes";
-import { Dumbbell, Plus, Timer } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import {
+  ChartNoAxesCombined,
+  Dumbbell,
+  House,
+  Plus,
+  Timer,
+} from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const getActiveTab = () => {
+    const path = location.pathname;
+    if (path.startsWith(DASHBOARD)) return "dashboard";
+    if (path.startsWith(EXERCISES)) return "exercises";
+    if (path.startsWith("/timer")) return "timer";
+    if (path.startsWith("/chart")) return "chart";
+    return "dashboard";
+  };
+
+  const handleTabClick = (tab: string) => {
+    switch (tab) {
+      case "dashboard":
+        navigate(DASHBOARD);
+        break;
+      case "exercises":
+        navigate(EXERCISES);
+        break;
+      case "timer":
+        // navigate("/timer"); // Uncomment when timer route is added
+        break;
+      case "chart":
+        // navigate("/chart"); // Uncomment when chart route is added
+        break;
+    }
+  };
+
+  const activeTab = getActiveTab();
+
   return (
     <div className="min-h-screen flex justify-center bg-zinc-950">
       <div className="w-full max-w-[414px] flex flex-col relative bg-zinc-950 text-white">
@@ -14,25 +50,21 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[414px] bg-zinc-900 border-t border-zinc-800 px-6 py-1">
           <div className="flex justify-between items-center">
             <Button
-              onClick={() => navigate(DASHBOARD)}
+              onClick={() => handleTabClick("dashboard")}
               variant="ghost"
-              className="text-blue-400"
+              className={`text-white ${
+                activeTab === "dashboard" ? "text-blue-500" : ""
+              }`}
             >
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-                />
-              </svg>
+              <House />
             </Button>
-            <Button variant="ghost">
+            <Button
+              onClick={() => handleTabClick("timer")}
+              variant="ghost"
+              className={`text-white ${
+                activeTab === "timer" ? "text-blue-500" : ""
+              }`}
+            >
               <Timer className="w-4 h-4" />
             </Button>
             <Button
@@ -41,23 +73,23 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
             >
               <Plus className="w-4 h-4" />
             </Button>
-            <Button onClick={() => navigate(EXERCISES)} variant="ghost">
+            <Button
+              onClick={() => handleTabClick("exercises")}
+              variant="ghost"
+              className={`text-white ${
+                activeTab === "exercises" ? "text-blue-500" : ""
+              }`}
+            >
               <Dumbbell />
             </Button>
-            <Button variant="ghost">
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                />
-              </svg>
+            <Button
+              onClick={() => handleTabClick("chart")}
+              variant="ghost"
+              className={`text-white ${
+                activeTab === "chart" ? "text-blue-500" : ""
+              }`}
+            >
+              <ChartNoAxesCombined />
             </Button>
           </div>
         </nav>

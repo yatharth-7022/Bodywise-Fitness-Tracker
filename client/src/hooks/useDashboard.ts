@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "../../intercerptor";
 import { DEFAULT_ROUTINE, ROUTINE_BY_ID } from "@/api";
-import { DASHBOARD, ROUTINE } from "@/routes/routes";
+import { DASHBOARD } from "@/routes/routes";
 import { useLocation, useParams } from "react-router-dom";
 import { DefaultRoutine, Routine } from "@/types/dashboard";
 
@@ -22,14 +22,17 @@ export const useDashboard = () => {
     refetchOnWindowFocus: false,
   });
 
-  const { data: routineById } = useQuery<Routine>({
-    queryKey: ["routine-by-id"],
+  const { data: routineById, isLoading: isRoutineLoading } = useQuery<Routine>({
+    queryKey: ["routine-by-id", id],
     queryFn: async () => {
-      const response = await api.get(`${ROUTINE_BY_ID}${id}`);
+      const response = await api.get(
+        `${ROUTINE_BY_ID}${id}?includeExercises=true`
+      );
       return response.data;
     },
-    enabled: location.pathname.startsWith(ROUTINE),
+    enabled: !!id,
     refetchOnWindowFocus: false,
   });
-  return { defaultRoutines, routineById };
+
+  return { defaultRoutines, routineById, isRoutineLoading };
 };
