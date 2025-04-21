@@ -163,3 +163,27 @@ export const refresh = async (req: Request, res: Response): Promise<void> => {
     res.status(401).json({ message: "Invalid refresh token" });
   }
 };
+export const logout = async (
+  req: AuthRequest,
+  res: Response
+): Promise<void> => {
+  try {
+    const refreshToken = req.cookies.refreshToken;
+    if (refreshToken) {
+      await prisma.refreshToken.deleteMany({
+        where: {
+          token: refreshToken,
+        },
+      });
+    }
+    res.clearCookie("refreshToken", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+    });
+    res.status(200).json({ message: "Logged Out Successfully" });
+  } catch (error) {
+    logger.error("Logout error:", error);
+    res.status(500).json({ message: "Something went wrong" });
+  }
+};

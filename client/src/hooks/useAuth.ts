@@ -1,10 +1,11 @@
-import { LOGIN, SIGNUP, USER_INFO } from "@/api";
+import { LOGIN, LOGOUT, SIGNUP, USER_INFO } from "@/api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { DASHBOARD } from "@/routes/routes";
 import { LoginData, SignupData } from "@/types/auth";
 import api from "../../intercerptor";
+import { LOGIN as LOGIN_ROUTE } from "@/routes/routes";
 
 export const useAuth = () => {
   const navigate = useNavigate();
@@ -54,11 +55,35 @@ export const useAuth = () => {
     refetchOnWindowFocus: false,
   });
 
+  const logoutMutation = useMutation({
+    mutationKey: ["logout"],
+    mutationFn: async () => {
+      const response = await api.post(LOGOUT);
+      return response.data;
+    },
+    onSuccess: () => {
+      localStorage.removeItem("token");
+      toast.success("Logged out successfully!");
+      navigate(LOGIN_ROUTE);
+    },
+    onError: (error: Error) => {
+      toast.error(error.message);
+      console.error(error);
+    },
+  });
+
+  const handleLogout = () => {
+    logoutMutation.mutate();
+  };
+
   return {
     signUpMutation,
     isLoading: signUpMutation.isPending,
     loginMutation,
     isLoginLoading: loginMutation.isPending,
     userData,
+    logoutMutation,
+    isLogoutLoading: logoutMutation.isPending,
+    handleLogout,
   };
 };

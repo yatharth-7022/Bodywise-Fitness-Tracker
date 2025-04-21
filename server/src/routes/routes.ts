@@ -1,5 +1,11 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { signup, login, getUser, refresh } from "../controllers/authController";
+import {
+  signup,
+  login,
+  getUser,
+  refresh,
+  logout,
+} from "../controllers/authController";
 import { protect } from "../middleware/authMiddleware";
 
 import { authRateLimiter } from "../middleware/rateLimiter";
@@ -30,7 +36,6 @@ const router = Router();
 router.post("/signup", validateSignup, handleValidationErrors, signup);
 router.post("/login", validateLogin, handleValidationErrors, login);
 
-// Apply rate limiter and protection to all other routes
 router.use(authRateLimiter);
 router.use(protect);
 
@@ -46,5 +51,6 @@ router.get("/routines", getAllRoutines);
 router.get("/routines/default", getDefaultRoutines);
 router.get("/routines/:id", getRoutineById);
 router.post("/refresh", refresh);
+router.post("/logout", logout);
 
 export default router;

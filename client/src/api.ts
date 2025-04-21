@@ -7,6 +7,7 @@ const API_CONFIG = {
       signup: "/api/auth/signup",
       user: "/api/auth/user",
       refresh: "/api/auth/refresh",
+      logout: "/api/auth/logout",
     },
     weight: {
       log: "/api/weight",
@@ -27,6 +28,7 @@ const buildUrl = (endpoint: string) => `${API_CONFIG.baseUrl}${endpoint}`;
 
 export const LOGIN = buildUrl(API_CONFIG.endpoints.auth.login);
 export const SIGNUP = buildUrl(API_CONFIG.endpoints.auth.signup);
+export const LOGOUT = buildUrl(API_CONFIG.endpoints.auth.logout);
 export const USER_INFO = buildUrl(API_CONFIG.endpoints.auth.user);
 export const WEIGHT_LOG = buildUrl(API_CONFIG.endpoints.weight.log);
 export const RECENT_WEIGHTS = buildUrl(API_CONFIG.endpoints.weight.recent);
