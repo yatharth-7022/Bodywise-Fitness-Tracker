@@ -6,6 +6,7 @@ const API_CONFIG = {
       login: "/api/auth/login",
       signup: "/api/auth/signup",
       user: "/api/auth/user",
+      refresh: "/api/auth/refresh",
     },
     weight: {
       log: "/api/weight",

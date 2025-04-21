@@ -26,7 +26,8 @@ import { ALlExercises } from "./components/Exercise/AllExercises";
 
 function App() {
   const isAuthenticated = () => {
-    return true;
+    const token = localStorage.getItem("token");
+    return !!token;
   };
 
   const PrivateRoute = ({ children }: { children: React.ReactNode }) => {

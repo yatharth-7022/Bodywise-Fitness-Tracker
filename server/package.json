@@ -3,6 +3,7 @@
     "@prisma/client": "^5.10.2",
     "@types/morgan": "^1.9.9",
     "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.18.2",
@@ -11,6 +12,7 @@
     "morgan": "^1.10.0",
     "prisma": "^5.10.2",
     "rate-limiter-flexible": "^7.0.0",
+    "uuid": "^11.1.0",
     "winston": "^3.17.0"
   },
   "name": "server",
@@ -33,11 +35,13 @@
   "type": "commonjs",
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/cookie-parser": "^1.4.8",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/jsonwebtoken": "^9.0.5",
     "@types/morgan": "^1.9.9",
     "@types/node": "^20.17.30",
+    "@types/uuid": "^10.0.0",
     "nodemon": "^3.0.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"

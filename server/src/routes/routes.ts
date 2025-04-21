@@ -1,5 +1,5 @@
 import { Router, Request, Response, NextFunction } from "express";
-import { signup, login, getUser } from "../controllers/authController";
+import { signup, login, getUser, refresh } from "../controllers/authController";
 import { protect } from "../middleware/authMiddleware";
 
 import { authRateLimiter } from "../middleware/rateLimiter";
@@ -45,5 +45,6 @@ router.get("/exercises/:bodyPart", getExercisesByBodyPart);
 router.get("/routines", getAllRoutines);
 router.get("/routines/default", getDefaultRoutines);
 router.get("/routines/:id", getRoutineById);
+router.post("/refresh", refresh);
 
 export default router;

@@ -14,10 +14,22 @@ model User {
   password      String
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
+  refreshToken  RefreshToken[]
   exerciseSets  ExerciseSet[]
   personalBests PersonalBest[]
   routines      Routine[]
   weights       Weight[]
+}
+
+model RefreshToken {
+  id        Int      @id @default(autoincrement())
+  token     String    @unique
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }
 
 model Weight {

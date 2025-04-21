@@ -7,21 +7,39 @@ import {
   Plus,
   Timer,
 } from "lucide-react";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const AppLayout = ({ children }: { children: React.ReactNode }) => {
-  const [activeTab, setActiveTab] = useState<string>("dashboard");
   const navigate = useNavigate();
-  useEffect(() => {
-    if (activeTab === "dashboard") {
-      navigate(DASHBOARD);
-    } else if (activeTab === "timer") {
-      // navigate(TIMER);
-    } else if (activeTab === "exercises") {
-      navigate(EXERCISES);
+  const location = useLocation();
+
+  const getActiveTab = () => {
+    const path = location.pathname;
+    if (path.startsWith(DASHBOARD)) return "dashboard";
+    if (path.startsWith(EXERCISES)) return "exercises";
+    if (path.startsWith("/timer")) return "timer";
+    if (path.startsWith("/chart")) return "chart";
+    return "dashboard";
+  };
+
+  const handleTabClick = (tab: string) => {
+    switch (tab) {
+      case "dashboard":
+        navigate(DASHBOARD);
+        break;
+      case "exercises":
+        navigate(EXERCISES);
+        break;
+      case "timer":
+        // navigate("/timer"); // Uncomment when timer route is added
+        break;
+      case "chart":
+        // navigate("/chart"); // Uncomment when chart route is added
+        break;
     }
-  }, [activeTab, navigate]);
+  };
+
+  const activeTab = getActiveTab();
 
   return (
     <div className="min-h-screen flex justify-center bg-zinc-950">
@@ -32,7 +50,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         <nav className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[414px] bg-zinc-900 border-t border-zinc-800 px-6 py-1">
           <div className="flex justify-between items-center">
             <Button
-              onClick={() => setActiveTab("dashboard")}
+              onClick={() => handleTabClick("dashboard")}
               variant="ghost"
               className={`text-white ${
                 activeTab === "dashboard" ? "text-blue-500" : ""
@@ -41,7 +59,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
               <House />
             </Button>
             <Button
-              onClick={() => setActiveTab("timer")}
+              onClick={() => handleTabClick("timer")}
               variant="ghost"
               className={`text-white ${
                 activeTab === "timer" ? "text-blue-500" : ""
@@ -56,7 +74,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
               <Plus className="w-4 h-4" />
             </Button>
             <Button
-              onClick={() => setActiveTab("exercises")}
+              onClick={() => handleTabClick("exercises")}
               variant="ghost"
               className={`text-white ${
                 activeTab === "exercises" ? "text-blue-500" : ""
@@ -65,7 +83,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
               <Dumbbell />
             </Button>
             <Button
-              onClick={() => setActiveTab("chart")}
+              onClick={() => handleTabClick("chart")}
               variant="ghost"
               className={`text-white ${
                 activeTab === "chart" ? "text-blue-500" : ""

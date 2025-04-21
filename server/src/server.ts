@@ -8,6 +8,7 @@ import weightRoutes from "./routes/routes";
 import exerciseRoutes from "./routes/routes";
 import routineRoutes from "./routes/routes";
 import path from "path";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
@@ -35,6 +36,7 @@ app.use(
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "../public")));
+app.use(cookieParser());
 app.use(
   morgan("combined", {
     stream: { write: (message) => logger.info(message.trim()) },
