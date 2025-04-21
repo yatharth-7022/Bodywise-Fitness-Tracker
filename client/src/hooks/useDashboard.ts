@@ -9,7 +9,6 @@ export const useDashboard = () => {
   const location = useLocation();
   const { id } = useParams();
 
-  // For dashboard view - lightweight routine data without exercises
   const { data: defaultRoutines } = useQuery<DefaultRoutine[]>({
     queryKey: ["default-routines"],
     queryFn: async () => {
@@ -18,12 +17,11 @@ export const useDashboard = () => {
       );
       return response.data;
     },
-    staleTime: 1000 * 60 * 60 * 24, // Cache for 24 hours
+    staleTime: 1000 * 60 * 60 * 24,
     enabled: location.pathname === DASHBOARD,
     refetchOnWindowFocus: false,
   });
 
-  // For routine detail view - full routine data with exercises
   const { data: routineById, isLoading: isRoutineLoading } = useQuery<Routine>({
     queryKey: ["routine-by-id", id],
     queryFn: async () => {
@@ -32,7 +30,7 @@ export const useDashboard = () => {
       );
       return response.data;
     },
-    enabled: !!id, // Only check if ID exists, don't check pathname
+    enabled: !!id,
     refetchOnWindowFocus: false,
   });
 

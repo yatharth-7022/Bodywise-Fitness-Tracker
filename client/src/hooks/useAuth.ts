@@ -2,7 +2,7 @@ import { LOGIN, LOGOUT, SIGNUP, USER_INFO } from "@/api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { DASHBOARD } from "@/routes/routes";
+import { DASHBOARD, SETTINGS } from "@/routes/routes";
 import { LoginData, SignupData } from "@/types/auth";
 import api from "../../intercerptor";
 import { LOGIN as LOGIN_ROUTE } from "@/routes/routes";
@@ -50,7 +50,7 @@ export const useAuth = () => {
       const response = await api.get(USER_INFO);
       return response.data;
     },
-    enabled: location.pathname === DASHBOARD,
+    enabled: location.pathname === DASHBOARD || location.pathname === SETTINGS,
     staleTime: 1000 * 60 * 60 * 24,
     refetchOnWindowFocus: false,
   });

@@ -1,5 +1,5 @@
 import { useExercises } from "@/hooks/useExercises";
-import { Search } from "lucide-react";
+import { Loader2, Search } from "lucide-react";
 import { ExerciseCardContent } from "./ExerciseCard";
 import { ExerciseDrawer } from "./ExerciseDrawer";
 import { useState } from "react";
@@ -15,6 +15,7 @@ export const ALlExercises = () => {
     handleExerciseClick,
     setShowModal,
     setActiveFilter,
+    isLoadingAllExercises,
   } = useExercises();
 
   const [searchQuery, setSearchQuery] = useState("");
@@ -37,6 +38,16 @@ export const ALlExercises = () => {
 
   return (
     <div className="flex flex-col min-h-screen bg-zinc-950 text-white">
+      {isLoadingAllExercises && (
+        <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 flex items-center justify-center">
+          <div className="flex flex-col items-center gap-4">
+            <Loader2 className="h-8 w-8 animate-spin text-lime-400" />
+            <p className="text-lg text-white font-medium">
+              Getting exercises...
+            </p>
+          </div>
+        </div>
+      )}
       <main className="flex-1 px-4 pb-20 pt-4">
         <div className="mb-6">
           <div className="flex justify-between items-center mb-4">

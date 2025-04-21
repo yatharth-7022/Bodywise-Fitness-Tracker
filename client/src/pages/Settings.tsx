@@ -18,7 +18,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 export const Settings = () => {
   const navigate = useNavigate();
-  const { handleLogout, isLogoutLoading } = useAuth();
+  const { handleLogout, isLogoutLoading, userData } = useAuth();
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -30,7 +30,6 @@ export const Settings = () => {
           </div>
         </div>
       )}
-      {/* Header */}
       <div className="px-6 py-4 flex items-center">
         <Button
           variant="ghost"
@@ -45,15 +44,19 @@ export const Settings = () => {
 
       <Separator className="mb-6" />
 
-      {/* Settings Content */}
       <div className="px-6 space-y-6">
-        {/* Account Section */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-lime-400">Account</h2>
           <div className="bg-zinc-900 rounded-lg p-4 space-y-4">
             <div className="space-y-1">
+              <label className="text-sm font-medium text-zinc-400">
+                Username
+              </label>
+              <p className="text-foreground">{userData?.user?.name}</p>
+            </div>
+            <div className="space-y-1">
               <label className="text-sm font-medium text-zinc-400">Email</label>
-              <p className="text-foreground">user@example.com</p>
+              <p className="text-foreground">{userData?.user?.email}</p>
             </div>
             <div className="space-y-1">
               <label className="text-sm font-medium text-zinc-400">
@@ -64,7 +67,6 @@ export const Settings = () => {
           </div>
         </div>
 
-        {/* Preferences Section */}
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-lime-400">Preferences</h2>
           <div className="bg-zinc-900 rounded-lg p-4 space-y-4">
@@ -80,7 +82,6 @@ export const Settings = () => {
           </div>
         </div>
 
-        {/* Danger Zone */}
         <div className="space-y-4 pt-6">
           <h2 className="text-xl font-semibold text-red-500">Danger Zone</h2>
           <div className="bg-zinc-900/50 border border-red-900/50 rounded-lg p-4">
