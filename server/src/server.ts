@@ -9,21 +9,17 @@ import exerciseRoutes from "./routes/routes";
 import routineRoutes from "./routes/routes";
 import path from "path";
 
-// Load environment variables
 dotenv.config();
 
 const app = express();
 
-// Parse CORS allowed origins from environment variable
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [
   "http://localhost:5173",
 ];
 
-// Configure CORS to allow requests from your frontend
 app.use(
   cors({
     origin: (origin, callback) => {
-      // Allow requests with no origin (like mobile apps)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.indexOf(origin) === -1) {
@@ -38,7 +34,6 @@ app.use(
 );
 
 app.use(express.json());
-// Serve static files from the public directory
 app.use(express.static(path.join(__dirname, "../public")));
 app.use(
   morgan("combined", {
@@ -46,7 +41,6 @@ app.use(
   })
 );
 
-// Public health check endpoint
 app.get("/health", (req, res) => {
   res.json({ status: "ok", message: "Server is running" });
 });
