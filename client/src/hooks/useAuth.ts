@@ -1,8 +1,8 @@
-import { LOGIN, LOGOUT, SIGNUP, USER_INFO } from "@/api";
+import { LOGIN, LOGOUT, SIGNUP } from "@/api";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { DASHBOARD, SETTINGS, UPLOAD_PROFILE_PICTURE } from "@/routes/routes";
+import { DASHBOARD, UPLOAD_PROFILE_PICTURE } from "@/routes/routes";
 import { LoginData, SignupData } from "@/types/auth";
 import api from "../../intercerptor";
 import { LOGIN as LOGIN_ROUTE } from "@/routes/routes";
@@ -45,17 +45,6 @@ export const useAuth = () => {
     },
   });
 
-  const { data: userData } = useQuery({
-    queryKey: ["user"],
-    queryFn: async () => {
-      const response = await api.get(USER_INFO);
-      return response.data;
-    },
-    enabled: location.pathname === DASHBOARD || location.pathname === SETTINGS,
-    staleTime: 1000 * 60 * 60 * 24,
-    refetchOnWindowFocus: false,
-  });
-
   const logoutMutation = useMutation({
     mutationKey: ["logout"],
     mutationFn: async () => {
@@ -84,6 +73,8 @@ export const useAuth = () => {
       return response.data;
     },
     enabled: !!localStorage.getItem("token"),
+    staleTime: 1000 * 60 * 60 * 24,
+    refetchOnWindowFocus: false,
   });
 
   return {
@@ -91,7 +82,6 @@ export const useAuth = () => {
     isLoading: signUpMutation.isPending,
     loginMutation,
     isLoginLoading: loginMutation.isPending,
-    userData,
     logoutMutation,
     isLogoutLoading: logoutMutation.isPending,
     handleLogout,

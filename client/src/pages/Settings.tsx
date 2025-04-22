@@ -24,13 +24,8 @@ import api from "../../intercerptor";
 
 export const Settings = () => {
   const navigate = useNavigate();
-  const {
-    handleLogout,
-    isLogoutLoading,
-    userData,
-    profileData,
-    refetchProfile,
-  } = useAuth();
+  const { handleLogout, isLogoutLoading, profileData, refetchProfile } =
+    useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -78,6 +73,7 @@ export const Settings = () => {
 
       toast.success("Profile picture updated successfully!");
     } catch (error) {
+      console.error(error);
       toast.error("Failed to upload profile picture");
       setUploadProgress(0);
     } finally {
@@ -225,11 +221,11 @@ export const Settings = () => {
               <label className="text-sm font-medium text-zinc-400">
                 Username
               </label>
-              <p className="text-foreground">{userData?.user?.name}</p>
+              <p className="text-foreground">{profileData?.user?.name}</p>
             </div>
             <div className="space-y-1">
               <label className="text-sm font-medium text-zinc-400">Email</label>
-              <p className="text-foreground">{userData?.user?.email}</p>
+              <p className="text-foreground">{profileData?.user?.email}</p>
             </div>
             <div className="space-y-1">
               <label className="text-sm font-medium text-zinc-400">

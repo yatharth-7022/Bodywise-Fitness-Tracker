@@ -121,10 +121,8 @@ export const refresh = async (req: Request, res: Response): Promise<void> => {
   }
 
   try {
-    // Verify refresh token
     const decoded = jwt.verify(refreshToken, REFRESH_SECRET) as { id: number };
 
-    // Check if refresh token exists in database
     const storedToken = await prisma.refreshToken.findFirst({
       where: {
         token: refreshToken,
@@ -140,12 +138,10 @@ export const refresh = async (req: Request, res: Response): Promise<void> => {
       return;
     }
 
-    // Generate new tokens
     const { accessToken, refreshToken: newRefreshToken } = generateTokens(
       decoded.id
     );
 
-    // Update refresh token in database
     await prisma.refreshToken.update({
       where: { id: storedToken.id },
       data: {
@@ -208,21 +204,17 @@ export const uploadProfilePicture = async (
       return;
     }
 
-    // Get the current user to check if they have an existing profile picture
     const currentUser = await prisma.user.findUnique({
       where: { id: userId },
       select: { profilePicture: true },
     });
 
-    // If there's an existing profile picture, delete it from Cloudinary
     if (currentUser?.profilePicture) {
       await deleteFromCloudinary(currentUser.profilePicture);
     }
 
-    // Upload new image to Cloudinary
     const profilePictureUrl = await uploadToCloudinary(req.file);
 
-    // Update user with new profile picture URL
     const updatedUser = await prisma.user.update({
       where: { id: userId },
       data: { profilePicture: profilePictureUrl },
