@@ -13,6 +13,7 @@ import {
   ROUTINE,
   EXERCISES,
   SETTINGS,
+  UPLOAD_PROFILE_PICTURE,
 } from "./routes/routes";
 import { PreSignUp } from "./pages/PreSignUp";
 import SignUp from "./pages/SignUp";
@@ -25,6 +26,7 @@ import Routine from "./components/Routine";
 import Dashboard from "@/pages/Dashboard";
 import { ALlExercises } from "./components/Exercise/AllExercises";
 import { Settings } from "./pages/Settings";
+import UploadProfile from "./pages/UploadProfile";
 
 function App() {
   const isAuthenticated = () => {
@@ -90,6 +92,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Settings />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={UPLOAD_PROFILE_PICTURE}
+            element={
+              <PrivateRoute>
+                <UploadProfile />
               </PrivateRoute>
             }
           />

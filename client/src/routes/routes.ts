@@ -13,3 +13,4 @@ export const WEIGHTS = "/weights";
 export const ROUTINE = "/routine";
 export const EXERCISES = "/all-exercises";
 export const SETTINGS = "/settings";
+export const UPLOAD_PROFILE_PICTURE = "/upload-profile-picture";

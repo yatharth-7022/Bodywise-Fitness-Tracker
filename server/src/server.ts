@@ -43,6 +43,9 @@ app.use(
   })
 );
 
+// Serve static files from public directory
+app.use("/uploads", express.static(path.join(__dirname, "../public/uploads")));
+
 app.get("/health", (req, res) => {
   res.json({ status: "ok", message: "Server is running" });
 });

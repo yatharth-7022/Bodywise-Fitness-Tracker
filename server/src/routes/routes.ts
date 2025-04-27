@@ -5,6 +5,8 @@ import {
   getUser,
   refresh,
   logout,
+  uploadProfilePicture,
+  getProfilePicture,
 } from "../controllers/authController";
 import { protect } from "../middleware/authMiddleware";
 
@@ -30,6 +32,7 @@ import {
   getDefaultRoutines,
   getRoutineById,
 } from "../controllers/routineController";
+import { upload } from "../utils/fileUpload";
 
 const router = Router();
 
@@ -52,5 +55,11 @@ router.get("/routines/default", getDefaultRoutines);
 router.get("/routines/:id", getRoutineById);
 router.post("/refresh", refresh);
 router.post("/logout", logout);
+router.post(
+  "/upload-profile-picture",
+  upload.single("profilePicture"),
+  uploadProfilePicture
+);
+router.get("/profile", getProfilePicture);
 
 export default router;

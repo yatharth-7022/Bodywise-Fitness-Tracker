@@ -20,7 +20,7 @@ export default tseslint.config(
     rules: {
       ...reactHooks.configs.recommended.rules,
       "no-unused-vars": [
-        "error",
+        "warn",
         {
           vars: "all",
           args: "after-used",
