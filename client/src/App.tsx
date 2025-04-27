@@ -1,6 +1,6 @@
 import "./App.css";
 import { Navigate, Route, BrowserRouter, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
+import { Home } from "./pages/Home/Home";
 
 import {
   DASHBOARD,
@@ -14,19 +14,21 @@ import {
   EXERCISES,
   SETTINGS,
   UPLOAD_PROFILE_PICTURE,
+  TIMER,
 } from "./routes/routes";
-import { PreSignUp } from "./pages/PreSignUp";
-import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import { LogWeight } from "./pages/LogWeight";
+import { PreSignUp } from "./pages/Auth/PreSignUp";
+import SignUp from "./pages/Auth/SignUp";
+import Login from "./pages/Auth/Login";
+import { LogWeight } from "./pages/Log-Weight/LogWeight";
 import { Toaster } from "react-hot-toast";
-import { AllWeights } from "./components/AllWeights";
-import { AppLayout } from "./pages/AppLayout";
-import Routine from "./components/Routine";
-import Dashboard from "@/pages/Dashboard";
+import { AllWeights } from "./components/Log-Weights/AllWeights";
+import { AppLayout } from "./pages/App-Layout/AppLayout";
+import Routine from "./components/Routine/Routine";
+import Dashboard from "@/components/Dashboard/Dashboard";
 import { ALlExercises } from "./components/Exercise/AllExercises";
-import { Settings } from "./pages/Settings";
-import UploadProfile from "./pages/UploadProfile";
+import { Settings } from "./pages/Settings/Settings";
+import UploadProfile from "./components/Upload-Profile/UploadProfile";
+import { TimerPage } from "./pages/Timer/TimerPage";
 
 function App() {
   const isAuthenticated = () => {
@@ -100,6 +102,14 @@ function App() {
             element={
               <PrivateRoute>
                 <UploadProfile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={TIMER}
+            element={
+              <PrivateRoute>
+                <TimerPage />
               </PrivateRoute>
             }
           />

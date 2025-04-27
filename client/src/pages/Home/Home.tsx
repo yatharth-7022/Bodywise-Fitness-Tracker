@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import { PRESIGNUP } from "../routes/routes";
-import backImage from "../assets/image/back.jpeg";
+import { PRESIGNUP } from "../../routes/routes";
+import backImage from "../../assets/image/back.jpeg";
 export const Home = () => {
   const navigate = useNavigate();
   return (

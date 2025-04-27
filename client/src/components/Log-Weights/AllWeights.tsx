@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 import React from "react";
-import { Card, CardContent } from "./ui/card";
-import { Button } from "./ui/button";
+import { Card, CardContent } from "../ui/card";
+import { Button } from "../ui/button";
 import { ArrowLeft } from "lucide-react";
 import { useWeights } from "@/hooks/useWeights";
 import { useNavigate } from "react-router-dom";

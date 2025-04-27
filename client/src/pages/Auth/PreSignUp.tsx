@@ -1,9 +1,9 @@
 import React from "react";
 import { MoveLeft } from "lucide-react";
-import { HOME, SIGNUP } from "../routes/routes";
+import { HOME, SIGNUP } from "../../routes/routes";
 import { useNavigate } from "react-router-dom";
-import male from "../assets/image/male.jpeg";
-import female from "../assets/image/female.jpeg";
+import female from "../../assets/image/female.jpeg";
+import male from "../../assets/image/male.jpeg";
 import {
   Carousel,
   CarouselContent,
