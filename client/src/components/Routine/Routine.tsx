@@ -7,7 +7,7 @@ import {
   Dumbbell,
 } from "lucide-react";
 import { useDashboard } from "@/hooks/useDashboard";
-import { DASHBOARD } from "@/routes/routes";
+import { DASHBOARD, ROUTINE } from "@/routes/routes";
 import { useNavigate } from "react-router-dom";
 import { firstLetterUppercase } from "@/utils/handlerFunctions";
 
@@ -118,7 +118,14 @@ const Routine = () => {
             ))}
           </div>
 
-          <button className="w-full mb-2 bg-blue-600 text-white py-3 rounded-lg font-medium mt-3">
+          <button
+            className="w-full mb-2 bg-blue-600 text-white py-3 rounded-lg font-medium mt-3"
+            onClick={() =>
+              navigate(
+                `${ROUTINE}/${routineById?.name}/${routineById?.id}/session`
+              )
+            }
+          >
             Start Session
           </button>
         </div>

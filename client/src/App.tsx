@@ -29,6 +29,7 @@ import { ALlExercises } from "./components/Exercise/AllExercises";
 import { Settings } from "./pages/Settings/Settings";
 import UploadProfile from "./components/Upload-Profile/UploadProfile";
 import { TimerPage } from "./pages/Timer/TimerPage";
+import RoutineSession from "./components/Routine/RoutineSession";
 
 function App() {
   const isAuthenticated = () => {
@@ -86,6 +87,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Routine />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path={`${ROUTINE}/:title/:id/session`}
+            element={
+              <PrivateRoute>
+                <RoutineSession />
               </PrivateRoute>
             }
           />
