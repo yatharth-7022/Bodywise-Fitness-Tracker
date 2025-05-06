@@ -91,11 +91,33 @@ export const startSession = async (req: AuthRequest, res: Response) => {
     });
   } catch (error) {
     console.error("Error in starting session", error);
-    return res
-      .status(500)
-      .json({
-        message: "Internal server error",
-        error: error instanceof Error ? error.message : "Unknown error",
-      });
+    return res.status(500).json({
+      message: "Internal server error",
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
+
+export const completeSession = async (req: AuthRequest, res: Response) => {
+  try {
+    const { sessionId } = req.params;
+    const { exercises, notes } = req.body;
+    const userId = req.userId;
+
+    const session = await prisma.workoutSession.findUnique({
+      where: { id: parseInt(sessionId) },
+    });
+
+    if (!session) {
+      return res.status(404).json({ message: "Session not found" });
+    }
+
+    if (session.userId !== userId) {
+      return res.status(403).json({ message: "Unauthorized" });
+    }
+
+     
+  } catch (error) {
+    console.error("Error in completing session", error);
   }
 };
