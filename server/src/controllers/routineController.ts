@@ -3,6 +3,11 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
+const exerciseInclude = {
+  exercise: true,
+  exerciseSets: true,
+};
+
 export const getAllRoutines = async (req: Request, res: Response) => {
   try {
     const includeExercises = req.query.includeExercises !== "false";
@@ -11,9 +16,7 @@ export const getAllRoutines = async (req: Request, res: Response) => {
       include: includeExercises
         ? {
             exercises: {
-              include: {
-                exercise: true,
-              },
+              include: exerciseInclude,
             },
           }
         : undefined,
@@ -34,9 +37,7 @@ export const getRoutineById = async (req: Request, res: Response) => {
       include: includeExercises
         ? {
             exercises: {
-              include: {
-                exercise: true,
-              },
+              include: exerciseInclude,
             },
           }
         : undefined,
@@ -59,9 +60,7 @@ export const getDefaultRoutines = async (req: Request, res: Response) => {
       include: includeExercises
         ? {
             exercises: {
-              include: {
-                exercise: true,
-              },
+              include: exerciseInclude,
             },
           }
         : undefined,

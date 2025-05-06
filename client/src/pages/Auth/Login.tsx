@@ -1,47 +1,11 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ArrowLeft, Dumbbell } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-import { LoginData } from "@/types/auth";
-
 export default function Login() {
-  const { loginMutation, isLoginLoading } = useAuth();
-  const [formData, setFormData] = useState<LoginData>({
-    email: "",
-    password: "",
-  });
-  const [errors, setErrors] = useState<Partial<LoginData>>({});
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setFormData({ ...formData, [id]: value });
-    if (errors[id as keyof LoginData]) {
-      setErrors({ ...errors, [id]: "" });
-    }
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setErrors({});
-    loginMutation.mutate(formData, {
-      onError: (error: Error) => {
-        try {
-          const errorData = JSON.parse(error.message);
-          if (Array.isArray(errorData.errors)) {
-            const fieldErrors: Partial<LoginData> = {};
-            errorData.errors.forEach((err: { param: string; msg: string }) => {
-              fieldErrors[err.param as keyof LoginData] = err.msg;
-            });
-            setErrors(fieldErrors);
-          }
-        } catch {
-          setErrors({ email: error.message });
-        }
-      },
-    });
-  };
+  const { isLoginLoading, handleInputChange, handleSubmit, errors, formData } =
+    useAuth();
 
   return (
     <div className="flex flex-col min-h-screen bg-black">
@@ -59,7 +23,7 @@ export default function Login() {
           </div>
           <h1 className="text-2xl font-bold text-white">FitTrack</h1>
         </div>
-
+        ``
         <div className="mb-8 relative mx-auto">
           <div className="w-32 h-32 rounded-full overflow-hidden bg-zinc-800 flex items-center justify-center mb-6 mx-auto">
             <svg
@@ -87,7 +51,6 @@ export default function Login() {
             Continue your fitness journey
           </p>
         </div>
-
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <label
@@ -181,7 +144,6 @@ export default function Login() {
             )}
           </Button>
         </form>
-
         <div className="text-center text-sm text-zinc-400 mt-auto pt-4">
           Don't have an account yet?{" "}
           <Link
@@ -191,7 +153,6 @@ export default function Login() {
             Sign up
           </Link>
         </div>
-
         <div className="mt-6 text-center px-4 py-5 bg-zinc-900/60 rounded-xl">
           <p className="text-lg text-lime-400 font-semibold italic">
             "The only bad workout is the one that didn't happen."

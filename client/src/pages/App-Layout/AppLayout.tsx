@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { DASHBOARD, EXERCISES } from "@/routes/routes";
+import { DASHBOARD, EXERCISES, TIMER } from "@/routes/routes";
 import {
   ChartNoAxesCombined,
   Dumbbell,
@@ -17,7 +17,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
     const path = location.pathname;
     if (path.startsWith(DASHBOARD)) return "dashboard";
     if (path.startsWith(EXERCISES)) return "exercises";
-    if (path.startsWith("/timer")) return "timer";
+    if (path.startsWith(TIMER)) return "timer";
     if (path.startsWith("/chart")) return "chart";
     return "dashboard";
   };
@@ -31,7 +31,7 @@ export const AppLayout = ({ children }: { children: React.ReactNode }) => {
         navigate(EXERCISES);
         break;
       case "timer":
-        // navigate("/timer"); // Uncomment when timer route is added
+        navigate(TIMER);
         break;
       case "chart":
         // navigate("/chart"); // Uncomment when chart route is added

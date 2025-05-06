@@ -16,11 +16,11 @@ import { Separator } from "@/components/ui/separator";
 import { useNavigate } from "react-router-dom";
 import { DASHBOARD } from "@/routes/routes";
 import { useAuth } from "@/hooks/useAuth";
-import { ProfilePicture } from "@/components/ProfilePicture";
+import { ProfilePicture } from "@/components/Upload-Profile/ProfilePicture";
 import { motion, AnimatePresence } from "framer-motion";
 import toast from "react-hot-toast";
 import { API_CONFIG } from "@/api";
-import api from "../../intercerptor";
+import api from "../../../intercerptor";
 
 export const Settings = () => {
   const navigate = useNavigate();

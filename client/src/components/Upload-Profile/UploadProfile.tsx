@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { DASHBOARD } from "@/routes/routes";
 import toast from "react-hot-toast";
 import { API_CONFIG } from "@/api";
-import api from "../../intercerptor";
+import api from "../../../intercerptor";
 
 export const UploadProfile = () => {
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ export const UploadProfile = () => {
 
       toast.success("Profile picture uploaded successfully!");
       setTimeout(() => navigate(DASHBOARD), 1000);
-    } catch (error: Error) {
+    } catch (error) {
       toast.error("Failed to upload profile picture");
       setUploadProgress(0);
     } finally {

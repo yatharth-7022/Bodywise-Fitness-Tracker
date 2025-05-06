@@ -7,9 +7,15 @@ import { LoginData, SignupData } from "@/types/auth";
 import api from "../../intercerptor";
 import { LOGIN as LOGIN_ROUTE } from "@/routes/routes";
 import { API_CONFIG } from "@/api";
+import { useState } from "react";
 
 export const useAuth = () => {
   const navigate = useNavigate();
+  const [formData, setFormData] = useState<LoginData>({
+    email: "",
+    password: "",
+  });
+  const [errors, setErrors] = useState<Partial<LoginData>>({});
 
   const signUpMutation = useMutation({
     mutationKey: ["signup"],
@@ -77,6 +83,35 @@ export const useAuth = () => {
     refetchOnWindowFocus: false,
   });
 
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = e.target;
+    setFormData({ ...formData, [id]: value });
+    if (errors[id as keyof LoginData]) {
+      setErrors({ ...errors, [id]: "" });
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setErrors({});
+    loginMutation.mutate(formData, {
+      onError: (error: Error) => {
+        try {
+          const errorData = JSON.parse(error.message);
+          if (Array.isArray(errorData.errors)) {
+            const fieldErrors: Partial<LoginData> = {};
+            errorData.errors.forEach((err: { param: string; msg: string }) => {
+              fieldErrors[err.param as keyof LoginData] = err.msg;
+            });
+            setErrors(fieldErrors);
+          }
+        } catch {
+          setErrors({ email: error.message });
+        }
+      },
+    });
+  };
+
   return {
     signUpMutation,
     isLoading: signUpMutation.isPending,
@@ -87,5 +122,9 @@ export const useAuth = () => {
     handleLogout,
     profileData,
     refetchProfile,
+    handleInputChange,
+    handleSubmit,
+    errors,
+    formData,
   };
 };

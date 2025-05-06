@@ -8,15 +8,15 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { WorkoutCard } from "@/components/WorkoutCard";
-import { WeeklyActivityChart } from "@/components/WeeklyActivityChart";
-import { MonthlyVolumeChart } from "@/components/MonthlyVolumeChart";
+import { WorkoutCard } from "@/components/Dashboard/WorkoutCard";
+import { WeeklyActivityChart } from "@/components/Dashboard/WeeklyActivityChart";
+import { MonthlyVolumeChart } from "@/components/Dashboard/MonthlyVolumeChart";
 import { LOG_WEIGHT, SETTINGS } from "@/routes/routes";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { useDashboard } from "@/hooks/useDashboard";
 import { DefaultRoutine } from "@/types/dashboard";
-import { ProfilePicture } from "@/components/ProfilePicture";
+import { ProfilePicture } from "@/components/Upload-Profile/ProfilePicture";
 
 export const Dashboard = () => {
   const { defaultRoutines } = useDashboard();
@@ -25,7 +25,6 @@ export const Dashboard = () => {
   const defaultRoutinesWithImage = defaultRoutines?.filter(
     (routine: DefaultRoutine) => routine.imageUrl !== null
   );
-  console.log(profileData);
   return (
     <div className="min-h-screen bg-zinc-950 text-white relative">
       <div className="max-w-[100vw] overflow-hidden">

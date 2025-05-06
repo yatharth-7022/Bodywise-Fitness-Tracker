@@ -17,6 +17,7 @@ model User {
   updatedAt     DateTime       @updatedAt
   refreshToken  RefreshToken[]
   exerciseSets  ExerciseSet[]
+    workoutSessions WorkoutSession[]
   personalBests PersonalBest[]
   routines      Routine[]
   weights       Weight[]
@@ -56,6 +57,7 @@ model Exercise {
   createdAt     DateTime          @default(now())
   updatedAt     DateTime          @updatedAt
   personalBests PersonalBest[]
+  sessionExercises SessionExercise[]
   routines      RoutineExercise[]
 }
 
@@ -69,6 +71,7 @@ model Routine {
   imageUrl    String?
   duration    Int?
   userId      Int?
+   workoutSessions WorkoutSession[]
   user        User?             @relation(fields: [userId], references: [id])
   exercises   RoutineExercise[]
 }
@@ -118,4 +121,45 @@ model PersonalBest {
   @@unique([userId, exerciseId])
   @@index([userId])
   @@index([exerciseId])
+}
+model WorkoutSession {
+  id          Int                 @id @default(autoincrement())
+  routineId   Int
+  userId      Int
+  startTime   DateTime            @default(now())
+  endTime     DateTime?
+  isCompleted Boolean             @default(false)
+  notes       String?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  routine     Routine             @relation(fields: [routineId], references: [id])
+  user        User                @relation(fields: [userId], references: [id])
+  exercises   SessionExercise[]
+
+  @@index([userId])
+  @@index([routineId])
+}
+model SessionExercise {
+  id            Int            @id @default(autoincrement())
+  sessionId     Int
+  exerciseId    Int
+  sets          SessionSet[]
+  session       WorkoutSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  exercise      Exercise       @relation(fields: [exerciseId], references: [id])
+
+  @@index([sessionId])
+  @@index([exerciseId])
+}
+
+model SessionSet {
+  id                Int            @id @default(autoincrement())
+  sessionExerciseId Int
+  weight            Float
+  reps              Int
+  isCompleted       Boolean        @default(false)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  sessionExercise   SessionExercise @relation(fields: [sessionExerciseId], references: [id], onDelete: Cascade)
+
+  @@index([sessionExerciseId])
 }
